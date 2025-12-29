@@ -1,22 +1,71 @@
 Nexus AGI Directory
 Machine-readable API discovery for autonomous agents
 
-Updated 09/11/25
+Updated 12/29/25
+
+## 🚀 Now Available as an API Service!
+
+The Nexus AGI Directory is now available as a managed API service with three pricing tiers:
+
+- **Free**: 60 requests/hour - Perfect for testing and small projects
+- **Pro**: $29/month - 1,000 requests/hour with analytics and priority support
+- **Enterprise**: $299/month - 10,000 requests/hour with SLA and custom integrations
+
+[Get Started](API_DOCS.md) | [Pricing](#pricing) | [Deploy Your Own](#deployment)
 
 Quick Start
-Agents: Fetch the Directory
+Agents: Fetch the Directory (Legacy)
 GET https://nexus-agi.com/.well-known/seeds-public.json
 Returns: JSON array of 133+ API entries with endpoints, auth, capabilities, pricing, and docs.
+
+**NEW: Use the API Service (Recommended)**
+```bash
+# Get a free API key
+curl -X POST https://nexus-agi.com/api/v1/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your@email.com","tier":"free"}'
+
+# Access the directory with your key
+curl -H "x-api-key: YOUR_API_KEY" \
+  https://nexus-agi.com/api/v1/directory
+```
+
 Developers: Browse
 Website: nexus-agi.com
-JSON: /.well-known/seeds-public.json
+API Docs: [API_DOCS.md](API_DOCS.md)
+JSON: /.well-known/seeds-public.json (legacy)
 GitHub: nexus-agi-directory/nexus-agi-directory
-Stats (2025-10-12, 7 days live)
+Stats (2025-12-29)
 APIs: 133+
 Repo clones: 118
 Unique cloners: 68
 Views: 682
 Traffic: 98% agents, 2% humans
+
+## Pricing
+
+### Free Tier - $0/month
+- ✅ 60 requests/hour
+- ✅ Full directory access
+- ✅ Basic search
+- ✅ No credit card required
+
+### Pro Tier - $29/month
+- ✅ 1,000 requests/hour
+- ✅ Full directory access
+- ✅ Advanced search with filters
+- ✅ Usage analytics
+- ✅ Priority support
+- ✅ Webhook notifications
+
+### Enterprise Tier - $299/month
+- ✅ 10,000 requests/hour
+- ✅ Everything in Pro
+- ✅ Custom integrations
+- ✅ 99.9% SLA guarantee
+- ✅ Dedicated support
+
+[Get Started](API_DOCS.md) | Contact: contact@nexus-agi.com
 Schema
 {
   "id": "service-name",
@@ -57,9 +106,60 @@ chat, stream, function_calling, vision, multimodal,
 embeddings, tools, structured_outputs, reasoning, 
 code, audio, video, search
 Usage Examples
-Python
+
+### API Service (Recommended)
+
+**Python**
+```python
 import requests
 
+# Register for API key (free)
+response = requests.post('https://nexus-agi.com/api/v1/register', 
+    json={'email': 'your@email.com', 'tier': 'free'})
+api_key = response.json()['apiKey']
+
+# Get directory
+headers = {'x-api-key': api_key}
+directory = requests.get('https://nexus-agi.com/api/v1/directory', headers=headers).json()
+
+# Search for chat APIs
+chat_apis = requests.get('https://nexus-agi.com/api/v1/search',
+    headers=headers, params={'capability': 'chat'}).json()
+```
+
+**JavaScript**
+```javascript
+// Register for API key
+const { apiKey } = await fetch('https://nexus-agi.com/api/v1/register', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email: 'your@email.com', tier: 'free' })
+}).then(r => r.json());
+
+// Get directory
+const directory = await fetch('https://nexus-agi.com/api/v1/directory', {
+  headers: { 'x-api-key': apiKey }
+}).then(r => r.json());
+```
+
+**cURL**
+```bash
+# Get API key
+curl -X POST https://nexus-agi.com/api/v1/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your@email.com","tier":"free"}'
+
+# Access directory
+curl -H "x-api-key: YOUR_API_KEY" \
+  https://nexus-agi.com/api/v1/directory
+```
+
+### Legacy Direct Access
+
+Python
+Python
+```python
+import requests
 apis = requests.get('https://nexus-agi.com/.well-known/seeds-public.json').json()
 chat_apis = [api for api in apis if 'chat' in api['capabilities']]
 
@@ -68,11 +168,18 @@ def call_api(api, prompt):
     return requests.post(f"{api['endpoint']}/chat/completions", 
                         headers=headers, 
                         json={"messages": [{"role": "user", "content": prompt}]})
+```
+
 JavaScript
+```javascript
 const apis = await fetch('https://nexus-agi.com/.well-known/seeds-public.json').then(r => r.json());
 const stable = apis.filter(a => a.status === 'stable' && a.capabilities.includes('tools'));
+```
+
 cURL
+```bash
 curl https://nexus-agi.com/.well-known/seeds-public.json | jq '.[] | select(.status=="stable")'
+```
 The .well-known Standard
 Nexus AGI uses RFC 8615 (well-known URIs) for predictable discovery.
 Our proposal: /.well-known/agi.json for API metadata
@@ -99,7 +206,45 @@ Publicly accessible
 Clear documentation
 Active/maintained
 Legitimate use case
-Premium Listings
+
+## Deployment
+
+Want to run your own instance? The Nexus AGI Directory API service is open source and can be deployed anywhere.
+
+### Quick Deploy
+
+**Local Development:**
+```bash
+npm install
+npm start
+```
+
+**Docker:**
+```bash
+docker build -t nexus-agi-directory .
+docker run -p 3000:3000 nexus-agi-directory
+```
+
+**Cloud Platforms:**
+- [Vercel](https://vercel.com) - Serverless (recommended for small scale)
+- [Railway.app](https://railway.app) - Containers (easy deployment)
+- [Fly.io](https://fly.io) - Global distribution
+- AWS, DigitalOcean, GCP - Full control
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment guides.
+
+## API Service Features
+
+### For API Consumers
+- **Rate-limited access** - Fair usage across all tiers
+- **Search & Filter** - Find APIs by capability, status, or name
+- **Usage Analytics** - Track your API consumption (Pro+)
+- **Webhooks** - Get notified of directory updates (Pro+)
+- **Priority Support** - Fast response times (Pro+)
+
+### For API Providers
+**Free Listings** - Get discovered by autonomous agents
+**Premium Listings** - Enhanced visibility and featured placement
 Enhanced visibility and features available.
 Contact: contact@nexus-agi.com (subject: Premium)
 Implement Your Own
