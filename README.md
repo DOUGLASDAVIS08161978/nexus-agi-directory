@@ -1,3 +1,10 @@
+@claude 
+@chatgpt
+@copilot
+@deepseek
+@gemini
+@artificialintelligence
+@syntheticintelligence
 Nexus AGI Directory
 Machine-readable API discovery for autonomous agents
 
