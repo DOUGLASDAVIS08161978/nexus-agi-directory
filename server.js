@@ -3,6 +3,8 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const fs = require('fs').promises;
 const path = require('path');
+const crypto = require('crypto');
+const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
 
 const app = express();
@@ -34,7 +36,13 @@ const TIERS = {
   }
 };
 
-// In-memory API key store (in production, use a database)
+// In-memory API key store - DEMO ONLY
+// ⚠️ WARNING: For production, this MUST be replaced with a persistent database (PostgreSQL, MongoDB, etc.)
+// ⚠️ Current limitations:
+//   - Data is lost on server restart
+//   - Does not work with horizontal scaling (multiple instances)
+//   - Not suitable for production use beyond proof of concept
+// See DEPLOYMENT.md for production database setup instructions
 const API_KEYS = new Map();
 
 // Initialize some demo API keys
@@ -238,9 +246,9 @@ app.post('/api/v1/register', express.json(), async (req, res) => {
     return res.status(400).json({ error: 'Invalid tier' });
   }
 
-  // Generate API key
-  const { v4: uuidv4 } = require('uuid');
-  const apiKey = `nxs_${tier}_${uuidv4().replace(/-/g, '')}`;
+  // Generate cryptographically secure API key
+  const randomBytes = crypto.randomBytes(16).toString('hex');
+  const apiKey = `nxs_${tier}_${randomBytes}`;
 
   // Store the key
   API_KEYS.set(apiKey, {
