@@ -55,7 +55,8 @@ class EnhancedLLM:
             return {
                 "result": self.reasoning_cache[cache_key],
                 "mode": mode.value,
-                "cached": True
+                "cached": True,
+                "reasoning_steps": 3  # Cached results have standard step count
             }
 
         # Perform reasoning based on mode
