@@ -192,7 +192,8 @@ class DatabaseManager:
     async def get_unacknowledged_changes(self, limit: int = 100) -> List[APIChangeEvent]:
         """Get unacknowledged change events."""
         query = """
-        SELECT * FROM change_events
+        SELECT api_id, change_type, old_value, new_value, detected_at, severity, metadata
+        FROM change_events
         WHERE acknowledged = 0
         ORDER BY severity DESC, detected_at DESC
         LIMIT ?
