@@ -1,0 +1,70 @@
+# Nexus Watcher Daemon Configuration
+
+daemon:
+  name: "Nexus Watcher"
+  version: "1.0.0"
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  state_db: "./data/nexus_watcher.db"
+
+# Directory source configuration
+directory:
+  source_file: "../.well-known/seeds-public.json"
+  reload_interval: 300  # seconds (5 minutes)
+
+# Health Monitor Worker
+health_monitor:
+  enabled: true
+  check_interval: 600  # seconds (10 minutes)
+  timeout: 10  # seconds per request
+  max_concurrent: 20  # parallel health checks
+  retry_attempts: 2
+  failure_threshold: 3  # mark as down after N consecutive failures
+
+# Discovery Scout Worker
+discovery_scout:
+  enabled: true
+  scan_interval: 3600  # seconds (1 hour)
+  sources:
+    - github_api_search
+    - product_hunt
+    - hacker_news
+  github_token: null  # Set via env GITHUB_TOKEN
+  max_results_per_scan: 50
+  confidence_threshold: 0.7  # AI relevance score threshold
+
+# Validator Worker
+validator:
+  enabled: true
+  validation_interval: 7200  # seconds (2 hours)
+  check_auth_methods: true
+  verify_endpoints: true
+  check_documentation: true
+
+# Change Detector Worker
+change_detector:
+  enabled: true
+  check_interval: 1800  # seconds (30 minutes)
+  track_docs_changes: true
+  track_api_versions: true
+  snapshot_interval: 86400  # daily snapshots
+
+# Monitoring API
+api:
+  enabled: true
+  host: "0.0.0.0"
+  port: 8080
+  cors_origins: ["*"]
+
+# Notifications (future enhancement)
+notifications:
+  enabled: false
+  email: null
+  slack_webhook: null
+  discord_webhook: null
+
+# Performance tuning
+performance:
+  max_workers: 10
+  connection_pool_size: 100
+  request_timeout: 30
+  rate_limit_per_second: 10
