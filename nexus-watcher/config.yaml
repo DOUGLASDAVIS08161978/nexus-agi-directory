@@ -62,6 +62,14 @@ notifications:
   slack_webhook: null
   discord_webhook: null
 
+# Meta-Agent Worker (Autonomous AI Coding System)
+meta_agent:
+  enabled: true
+  run_interval: 3600  # seconds (1 hour)
+  max_tasks_per_iteration: 3
+  use_ensemble_strategy: true
+  auto_improve: true
+
 # Performance tuning
 performance:
   max_workers: 10

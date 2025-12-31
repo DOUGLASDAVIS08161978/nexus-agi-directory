@@ -11,7 +11,8 @@ from .workers import (
     HealthMonitorWorker,
     DiscoveryScoutWorker,
     ValidatorWorker,
-    ChangeDetectorWorker
+    ChangeDetectorWorker,
+    MetaAgentWorker
 )
 from .utils.logger import DaemonLogger, get_logger
 
@@ -51,7 +52,8 @@ class NexusWatcherEngine:
             HealthMonitorWorker(self.config, self.db),
             DiscoveryScoutWorker(self.config, self.db),
             ValidatorWorker(self.config, self.db),
-            ChangeDetectorWorker(self.config, self.db)
+            ChangeDetectorWorker(self.config, self.db),
+            MetaAgentWorker(self.config, self.db)
         ]
 
         # Save initialization state
