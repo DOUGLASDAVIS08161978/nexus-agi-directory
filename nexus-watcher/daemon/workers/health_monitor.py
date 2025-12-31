@@ -31,7 +31,11 @@ class HealthMonitorWorker(BaseWorker):
         try:
             with open(directory_file, 'r') as f:
                 data = json.load(f)
-                self._apis = data.get('services', [])
+                # Handle both array format and object format
+                if isinstance(data, list):
+                    self._apis = data
+                else:
+                    self._apis = data.get('services', [])
                 self.logger.info(f"Loaded {len(self._apis)} APIs from directory")
         except Exception as e:
             self.logger.error(f"Failed to load directory: {e}")
