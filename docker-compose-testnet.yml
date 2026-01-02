@@ -1,0 +1,63 @@
+version: "3.7"
+
+services:
+  web:
+    environment:
+      FRONTEND_HTTP_PORT: "8080"
+      BACKEND_MAINNET_HTTP_HOST: "api"
+    image: mempool/frontend:latest
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 1m
+    command: "./wait-for db:3306 --timeout=720 -- nginx -g 'daemon off;'"
+    ports:
+      - 8080:8080
+    networks:
+      - mempool-testnet
+
+  api:
+    environment:
+      # Testnet configuration
+      MEMPOOL_BACKEND: "none"
+      CORE_RPC_HOST: "172.27.0.1"
+      CORE_RPC_PORT: "18332"  # Testnet RPC port
+      CORE_RPC_USERNAME: "bitcoinrpc"
+      CORE_RPC_PASSWORD: "testnet123"
+      DATABASE_ENABLED: "true"
+      DATABASE_HOST: "db"
+      DATABASE_DATABASE: "mempool"
+      DATABASE_USERNAME: "mempool"
+      DATABASE_PASSWORD: "mempool"
+      STATISTICS_ENABLED: "true"
+      # Testnet specific settings
+      MEMPOOL_NETWORK: "testnet"
+      MEMPOOL_TESTNET_ENABLED: "true"
+    image: mempool/backend:latest
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 1m
+    command: "./wait-for-it.sh db:3306 --timeout=720 --strict -- ./start.sh"
+    volumes:
+      - ./data:/backend/cache
+    networks:
+      - mempool-testnet
+
+  db:
+    environment:
+      MYSQL_DATABASE: "mempool"
+      MYSQL_USER: "mempool"
+      MYSQL_PASSWORD: "mempool"
+      MYSQL_ROOT_PASSWORD: "admin"
+      MARIADB_AUTO_UPGRADE: "1"
+    image: mariadb:10.5.21
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 1m
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - mempool-testnet
+
+networks:
+  mempool-testnet:
+    driver: bridge
