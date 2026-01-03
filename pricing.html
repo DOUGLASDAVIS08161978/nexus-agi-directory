@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Nexus AGI Directory API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid #667eea;
+            transform: scale(1.05);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .tier-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        
+        .price-period {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features li:last-child {
+            border-bottom: none;
+        }
+        
+        .check {
+            color: #10b981;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .cross {
+            color: #ef4444;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+        
+        .cta-button.secondary {
+            background: #f3f4f6;
+            color: #667eea;
+        }
+        
+        .api-example {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .api-example h2 {
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .code-block {
+            background: #1f2937;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .comparison {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .comparison h2 {
+            margin-bottom: 30px;
+            color: #667eea;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Nexus AGI Directory API</h1>
+            <p class="subtitle">Machine-readable API discovery for autonomous agents</p>
+        </header>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="tier-name">Free</h3>
+                <div class="price">$0</div>
+                <div class="price-period">per month</div>
+                <ul class="features">
+                    <li><span class="check">✓</span> 60 requests/hour</li>
+                    <li><span class="check">✓</span> Full directory access (143+ APIs)</li>
+                    <li><span class="check">✓</span> Basic search</li>
+                    <li><span class="check">✓</span> API documentation</li>
+                    <li><span class="cross">✗</span> Analytics</li>
+                    <li><span class="cross">✗</span> Webhooks</li>
+                    <li><span class="cross">✗</span> Priority support</li>
+                </ul>
+                <a href="#signup" class="cta-button secondary">Get Started Free</a>
+            </div>
+            
+            <div class="pricing-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <h3 class="tier-name">Pro</h3>
+                <div class="price">$29</div>
+                <div class="price-period">per month</div>
+                <ul class="features">
+                    <li><span class="check">✓</span> 1,000 requests/hour</li>
+                    <li><span class="check">✓</span> Full directory access</li>
+                    <li><span class="check">✓</span> Advanced search & filters</li>
+                    <li><span class="check">✓</span> Usage analytics</li>
+                    <li><span class="check">✓</span> Webhook notifications</li>
+                    <li><span class="check">✓</span> Priority support</li>
+                    <li><span class="check">✓</span> API key management</li>
+                </ul>
+                <a href="mailto:contact@nexus-agi.com?subject=Pro%20Tier%20Signup" class="cta-button">Upgrade to Pro</a>
+            </div>
+            
+            <div class="pricing-card">
+                <h3 class="tier-name">Enterprise</h3>
+                <div class="price">$299</div>
+                <div class="price-period">per month</div>
+                <ul class="features">
+                    <li><span class="check">✓</span> 10,000 requests/hour</li>
+                    <li><span class="check">✓</span> Everything in Pro</li>
+                    <li><span class="check">✓</span> Custom integrations</li>
+                    <li><span class="check">✓</span> 99.9% SLA guarantee</li>
+                    <li><span class="check">✓</span> Dedicated support</li>
+                    <li><span class="check">✓</span> Custom rate limits</li>
+                    <li><span class="check">✓</span> Early feature access</li>
+                </ul>
+                <a href="mailto:contact@nexus-agi.com?subject=Enterprise%20Inquiry" class="cta-button">Contact Sales</a>
+            </div>
+        </div>
+        
+        <div class="api-example" id="signup">
+            <h2>Get Started in 30 Seconds</h2>
+            <p style="margin-bottom: 20px;">Register for a free API key and start discovering AI APIs:</p>
+            <div class="code-block">
+<span style="color: #9ca3af;"># Register for a free API key</span>
+curl -X POST https://nexus-agi.com/api/v1/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your@email.com","tier":"free"}'
+
+<span style="color: #9ca3af;"># Use your API key</span>
+curl -H "x-api-key: YOUR_API_KEY" \
+  https://nexus-agi.com/api/v1/directory
+
+<span style="color: #9ca3af;"># Search for chat APIs</span>
+curl -H "x-api-key: YOUR_API_KEY" \
+  "https://nexus-agi.com/api/v1/search?capability=chat&status=stable"
+            </div>
+        </div>
+        
+        <div class="comparison">
+            <h2>Feature Comparison</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Free</th>
+                        <th>Pro</th>
+                        <th>Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Requests per Hour</td>
+                        <td>60</td>
+                        <td>1,000</td>
+                        <td>10,000+</td>
+                    </tr>
+                    <tr>
+                        <td>API Directory Access</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Search & Filters</td>
+                        <td>Basic</td>
+                        <td>Advanced</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td>Usage Analytics</td>
+                        <td>✗</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Webhooks</td>
+                        <td>✗</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Support</td>
+                        <td>Community</td>
+                        <td>Email (24-48h)</td>
+                        <td>Dedicated (4h)</td>
+                    </tr>
+                    <tr>
+                        <td>SLA</td>
+                        <td>✗</td>
+                        <td>✗</td>
+                        <td>99.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Integration</td>
+                        <td>✗</td>
+                        <td>✗</td>
+                        <td>✓</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>Questions? Email us at <a href="mailto:contact@nexus-agi.com">contact@nexus-agi.com</a></p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/nexus-agi-directory/nexus-agi-directory">GitHub</a> • 
+                <a href="API_DOCS.md">API Docs</a> • 
+                <a href="DEPLOYMENT.md">Deploy Your Own</a>
+            </p>
+            <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">
+                Open Source • MIT License • 143+ APIs • For agents, by humans
+            </p>
+        </div>
+    </div>
+</body>
+</html>
