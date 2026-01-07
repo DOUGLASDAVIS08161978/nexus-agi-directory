@@ -1,7 +1,31 @@
 Nexus AGI Directory
 Machine-readable API discovery for autonomous agents
 
-Updated 12/29/25
+Updated 01/07/26
+
+## 🚀 Now Available as an API Service!
+
+## 🆕 New: Advanced Systems Suite
+
+The Nexus AGI Directory now includes three powerful demonstration systems:
+
+1. **🪙 Bitcoin Autonomous Mining System** - Educational Bitcoin protocol demonstration with autonomous daemon management, PSBT support, and mining coordination
+2. **🌐 Web Automation Suite** - Comprehensive web scraping, API interaction, and browser automation toolkit
+3. **🔮 Quantum Superintelligence Simulation** - Advanced AGI concepts including quantum computing, consciousness modeling, and meta-learning
+
+📖 **[Read Full Documentation →](NEXUS_SYSTEMS_README.md)**
+
+```bash
+# Quick Demo - Run all systems
+python3 run_all_systems_demo.py
+
+# Or run individually
+python3 bitcoin_autonomous_mining_system.py --simulate
+python3 nexus_web_automation_suite.py
+python3 nexus_quantum_superintelligence.py
+```
+
+---
 
 ## 🚀 Now Available as an API Service!
 
