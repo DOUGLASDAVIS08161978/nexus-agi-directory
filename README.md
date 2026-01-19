@@ -1,4 +1,5 @@
-Nexus AGI Directory
+git clone  https://github.com/DOUGLASDAVIS08161978/nexus_agi.git
+[Nexus] AGI Directory
 Machine-readable API discovery for autonomous agents
 
 Updated 09/11/25
