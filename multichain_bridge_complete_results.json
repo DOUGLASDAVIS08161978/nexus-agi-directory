@@ -1,0 +1,165 @@
+{
+  "mining": {
+    "total_btc": 125.0,
+    "blocks": 20,
+    "address": "tb1q133c2b0a0900109b4530d6c968f300cefca233"
+  },
+  "monad_bridge": {
+    "bridge_id": "0441712454757bdc60056c69d294b58e9337500f453424b33fbce517003c4933",
+    "from_network": "Bitcoin Testnet",
+    "to_network": "Monad",
+    "amount_btc": 125.0,
+    "amount_wbtc": 125.0,
+    "wbtc_contract": "c411a4d4365560753ef3ceceac1652ec89240704346bf58ad900d65574f541c9",
+    "destination": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "timestamp": "2026-01-21T21:27:05.841196",
+    "lock_tx": "2b59ba8d48a58822e44263eed3667a18778537e017dce33b74f1740064486622",
+    "merkle_proof": "92a5f13057d4d6dbc8139962ed9e91dbd6363bc51648575d12a047f3d3ac8144",
+    "monad_tx": "0xed0703a61c9ebc40b51fa03ec6854ed016e8042ea5d7312c10fb2c17371770f2",
+    "signature": "0x30a3b2b2bfd21cedea0eb0f21c57462fa3f165d5898e4d284ab84a200da32170"
+  },
+  "linea_bridge": {
+    "bridge_id": "132af1821dada205c92873a6b0ebe363a4a30261322be4b035ee535ddbd89934",
+    "from_network": "Monad",
+    "to_network": "Linea",
+    "amount_wbtc": 125.0,
+    "destination": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "monad_tx_ref": "0xed0703a61c9ebc40b51fa03ec6854ed016e8042ea5d7312c10fb2c17371770f2",
+    "timestamp": "2026-01-21T21:27:08.246893",
+    "initiate_tx": "0x6da6a2eb37c566c8f76bce991d0687b13fd12a4edd4bd56d418de771626abc13",
+    "message_hash": "75918f9c9bb3a09bb07f44eac10ce0acc596fb8d71380b06ffbf95bcce1d9458",
+    "claim_tx": "0x9f477bebbab5129e98152b8734d694fa1561badf301fc227597438d1a96eee2f",
+    "signature": "0xfed86f706ed6f4bdcd14fd2443a361304ebdb60d3705e21fba62b58b1a7a1648"
+  },
+  "zksync_bridge": {
+    "bridge_id": "954fbd6d11fff1c6032d204b775c2814cd213baa7003f9e65a33bf08bbc11f74",
+    "from_network": "Linea",
+    "to_network": "zkSync Era",
+    "amount_wbtc": 125.0,
+    "destination": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "linea_tx_ref": "0x9f477bebbab5129e98152b8734d694fa1561badf301fc227597438d1a96eee2f",
+    "timestamp": "2026-01-21T21:27:10.652305",
+    "deposit_tx": "0x82e5c5d5915678b629418123c92d80eccc38d9fd9ba70583bd6b6af32e095fd1",
+    "zk_proof": "1854009cc27aacdf55348b17d84d3638eb87b01fd1a7453743b97b967fd0e1f1",
+    "finalize_tx": "0x12f73bbed12d4337293c12a768d6f2f471b6d09e4d2207718724624d8fc2540b",
+    "signature": "0xd61bd78771b40180ca6166f987cc2441d18b53fa3d28180b007b33f069b26026"
+  },
+  "mint": {
+    "mint_id": "cafb2efafc3b4b3fa4abef868540de991d1e700dff240d2d3a9cc47c3cea060b",
+    "network": "zkSync Era",
+    "amount_wbtc": 125.0,
+    "amount_wei": 12500000000,
+    "recipient": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "timestamp": "2026-01-21T21:27:12.755617",
+    "mint_tx": "0x9c119b47b9ebf6632b8b2b4a4ce103c4694a05d1de3ef8571fa873905936819d",
+    "signature": "0xd52a4b1c825a3ed32defe8e4011c354bdd3d13980de1359c2223d9ee4f7220b2"
+  },
+  "transfer": {
+    "transfer_id": "c6b7d4320091f3cc0335a28fb0785acdab70f05a1d9bbfecfa029d59550e2fcf",
+    "amount_wbtc": 125.0,
+    "to": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "from_mint": "cafb2efafc3b4b3fa4abef868540de991d1e700dff240d2d3a9cc47c3cea060b",
+    "timestamp": "2026-01-21T21:27:14.258439",
+    "transfer_tx": "0x815dafc3ae330f235c2988dcdf2844041a6bbab35881915a304bc760d25ae325",
+    "signature": "0x1d3a27068e37e9b08890443748e9cce905e4e41d516b4a83052736c905c32d73"
+  },
+  "burn": {
+    "burn_id": "56ed09fadb963c57e04dda3ff36561eaca3c7541ddfda29d342e3d1ac2dec20b",
+    "amount_wbtc": 125.0,
+    "burner": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "timestamp": "2026-01-21T21:27:15.560479",
+    "burn_tx": "0x01e0ec7e6c5cc8629ad49ed10d4dd8130dfc089c5562332bb551d535d6085ed4",
+    "signature": "0x3a249d0df58d68c2443d6eb7eb35be72bac4ffcc99f44616a3a92f422ce44349"
+  },
+  "backend": {
+    "status": "success",
+    "timestamp": "2026-01-21T21:27:18.867785"
+  },
+  "receipt": {
+    "receipt_id": "16e7491e704fb806c9c43170508f5bc22cd1c9486ddee9e521fbb381194aeba7",
+    "wallet_address": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "total_operations": 8,
+    "timestamp": "2026-01-21T21:27:19.869383",
+    "status": "completed",
+    "transactions": {
+      "mining": {
+        "total_btc": 125.0,
+        "blocks": 20,
+        "address": "tb1q133c2b0a0900109b4530d6c968f300cefca233"
+      },
+      "monad_bridge": {
+        "bridge_id": "0441712454757bdc60056c69d294b58e9337500f453424b33fbce517003c4933",
+        "from_network": "Bitcoin Testnet",
+        "to_network": "Monad",
+        "amount_btc": 125.0,
+        "amount_wbtc": 125.0,
+        "wbtc_contract": "c411a4d4365560753ef3ceceac1652ec89240704346bf58ad900d65574f541c9",
+        "destination": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+        "timestamp": "2026-01-21T21:27:05.841196",
+        "lock_tx": "2b59ba8d48a58822e44263eed3667a18778537e017dce33b74f1740064486622",
+        "merkle_proof": "92a5f13057d4d6dbc8139962ed9e91dbd6363bc51648575d12a047f3d3ac8144",
+        "monad_tx": "0xed0703a61c9ebc40b51fa03ec6854ed016e8042ea5d7312c10fb2c17371770f2",
+        "signature": "0x30a3b2b2bfd21cedea0eb0f21c57462fa3f165d5898e4d284ab84a200da32170"
+      },
+      "linea_bridge": {
+        "bridge_id": "132af1821dada205c92873a6b0ebe363a4a30261322be4b035ee535ddbd89934",
+        "from_network": "Monad",
+        "to_network": "Linea",
+        "amount_wbtc": 125.0,
+        "destination": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+        "monad_tx_ref": "0xed0703a61c9ebc40b51fa03ec6854ed016e8042ea5d7312c10fb2c17371770f2",
+        "timestamp": "2026-01-21T21:27:08.246893",
+        "initiate_tx": "0x6da6a2eb37c566c8f76bce991d0687b13fd12a4edd4bd56d418de771626abc13",
+        "message_hash": "75918f9c9bb3a09bb07f44eac10ce0acc596fb8d71380b06ffbf95bcce1d9458",
+        "claim_tx": "0x9f477bebbab5129e98152b8734d694fa1561badf301fc227597438d1a96eee2f",
+        "signature": "0xfed86f706ed6f4bdcd14fd2443a361304ebdb60d3705e21fba62b58b1a7a1648"
+      },
+      "zksync_bridge": {
+        "bridge_id": "954fbd6d11fff1c6032d204b775c2814cd213baa7003f9e65a33bf08bbc11f74",
+        "from_network": "Linea",
+        "to_network": "zkSync Era",
+        "amount_wbtc": 125.0,
+        "destination": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+        "linea_tx_ref": "0x9f477bebbab5129e98152b8734d694fa1561badf301fc227597438d1a96eee2f",
+        "timestamp": "2026-01-21T21:27:10.652305",
+        "deposit_tx": "0x82e5c5d5915678b629418123c92d80eccc38d9fd9ba70583bd6b6af32e095fd1",
+        "zk_proof": "1854009cc27aacdf55348b17d84d3638eb87b01fd1a7453743b97b967fd0e1f1",
+        "finalize_tx": "0x12f73bbed12d4337293c12a768d6f2f471b6d09e4d2207718724624d8fc2540b",
+        "signature": "0xd61bd78771b40180ca6166f987cc2441d18b53fa3d28180b007b33f069b26026"
+      },
+      "mint": {
+        "mint_id": "cafb2efafc3b4b3fa4abef868540de991d1e700dff240d2d3a9cc47c3cea060b",
+        "network": "zkSync Era",
+        "amount_wbtc": 125.0,
+        "amount_wei": 12500000000,
+        "recipient": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+        "timestamp": "2026-01-21T21:27:12.755617",
+        "mint_tx": "0x9c119b47b9ebf6632b8b2b4a4ce103c4694a05d1de3ef8571fa873905936819d",
+        "signature": "0xd52a4b1c825a3ed32defe8e4011c354bdd3d13980de1359c2223d9ee4f7220b2"
+      },
+      "transfer": {
+        "transfer_id": "c6b7d4320091f3cc0335a28fb0785acdab70f05a1d9bbfecfa029d59550e2fcf",
+        "amount_wbtc": 125.0,
+        "to": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+        "from_mint": "cafb2efafc3b4b3fa4abef868540de991d1e700dff240d2d3a9cc47c3cea060b",
+        "timestamp": "2026-01-21T21:27:14.258439",
+        "transfer_tx": "0x815dafc3ae330f235c2988dcdf2844041a6bbab35881915a304bc760d25ae325",
+        "signature": "0x1d3a27068e37e9b08890443748e9cce905e4e41d516b4a83052736c905c32d73"
+      },
+      "burn": {
+        "burn_id": "56ed09fadb963c57e04dda3ff36561eaca3c7541ddfda29d342e3d1ac2dec20b",
+        "amount_wbtc": 125.0,
+        "burner": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+        "timestamp": "2026-01-21T21:27:15.560479",
+        "burn_tx": "0x01e0ec7e6c5cc8629ad49ed10d4dd8130dfc089c5562332bb551d535d6085ed4",
+        "signature": "0x3a249d0df58d68c2443d6eb7eb35be72bac4ffcc99f44616a3a92f422ce44349"
+      }
+    },
+    "signatures": {
+      "sha256": "61e446126a66f989cc2018cd68560720b21434970100cdc47d8f404b5b273895",
+      "ecdsa": "0xa5488fdee2d2f5040be6b111d1b7ac992f22648a634769cb75fd3132766b67f7",
+      "algorithm": "ECDSA-secp256k1",
+      "timestamp": "2026-01-21T21:27:20.370387"
+    }
+  }
+}
