@@ -1,0 +1,45 @@
+{
+  "mining": {
+    "blocks": 10,
+    "total_btc": 62.5,
+    "address": "tb1q0ca1e6b915d8e55be087bb5844288074ed633f"
+  },
+  "bridge": {
+    "id": "4609f1991a27863f9a062b40c6e709402bd89db925de6a85568485a6c5bd9cf6",
+    "amount_btc": 5.0,
+    "amount_wbtc": 500000000.0,
+    "source_network": "Bitcoin Testnet",
+    "dest_network": "Mumbai",
+    "dest_address": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "status": "completed",
+    "timestamp": "2026-01-21T17:59:52.648170",
+    "steps_completed": [
+      "Lock BTC in bridge contract",
+      "Generate proof of lock",
+      "Submit proof to Polygon",
+      "Mint WBTC on Polygon",
+      "Transfer to destination"
+    ],
+    "proof": "ad508df24d6c947b7c0978d523464377082532c684919c904737db2223ba9dda",
+    "wbtc_tx_hash": "0x32f8f1dcc6faa27c11b61d659c81217b25ff4d2b70f9782091905184e26cbbf0",
+    "transfer_tx_hash": "0x10833d1f9ebc137c95d49be674cd129bcda071f6303c0ccac5b7c679cf8d7469"
+  },
+  "mint": {
+    "token": "WBTC",
+    "amount": 500000000.0,
+    "recipient": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "tx_hash": "0x2b4308a94f6e00c91093eada67f8315389a396ecb08f89ff5d0b7ffd5705a9e5",
+    "block_number": 12345678,
+    "timestamp": "2026-01-21T17:59:59.960604"
+  },
+  "receipt": {
+    "bridge_id": "4609f1991a27863f9a062b40c6e709402bd89db925de6a85568485a6c5bd9cf6",
+    "mint_tx": "0x2b4308a94f6e00c91093eada67f8315389a396ecb08f89ff5d0b7ffd5705a9e5",
+    "burn_tx": "0x774370d773674f3479b68b2d92ade75b0e09e29991ade7b6fd7594eb146643c6",
+    "amount": 500000000.0,
+    "timestamp": "2026-01-21T18:00:00.962026",
+    "status": "completed",
+    "signature": "6d5a7fa817f7b6ce5da5a8cff28712dcc2bf622f5dbb2df22a28c2caebbdf461"
+  },
+  "timestamp": "2026-01-21T18:00:01.963312"
+}
