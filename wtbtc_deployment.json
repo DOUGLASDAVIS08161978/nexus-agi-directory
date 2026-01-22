@@ -1,0 +1,24 @@
+{
+  "contract_name": "WTBTC",
+  "contract_address": "0x4e7ddd582914c8d34495bbf6a95c783963ac1881",
+  "deployer": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+  "network": "Ethereum Mainnet",
+  "chain_id": 1,
+  "total_supply": "100000000",
+  "decimals": 8,
+  "deployment_time": "2026-01-22T12:52:38.653472",
+  "features": {
+    "burnable": true,
+    "bridge_enabled": true,
+    "pausable": true,
+    "max_supply": "100000000"
+  },
+  "functions": {
+    "burnAndBridge": "Burn tokens and bridge to Bitcoin address",
+    "mint": "Mint new tokens (bridge only)",
+    "transfer": "Standard ERC20 transfer",
+    "approve": "Standard ERC20 approve",
+    "getPendingBurns": "Get list of pending burn requests",
+    "markBurnProcessed": "Mark burn as completed"
+  }
+}
