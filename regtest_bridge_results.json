@@ -1,0 +1,24 @@
+{
+  "bitcoin_wallet": {
+    "address": "bcrt1quaz9h5zker2d7lqdjkrgkzj023ctauupk07n8g",
+    "network": "Bitcoin Regtest",
+    "amount_btc": 5100.0
+  },
+  "ethereum_wallet": {
+    "address": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "network": "Ethereum Mainnet",
+    "amount_wbtc": 5100.0
+  },
+  "bridge": {
+    "bridge_tx": "0x356fa289d28054efbe4ba74107342403870b7869c8fa14d6782aa87cfa6c8eed",
+    "block": 19350000,
+    "confirmations": 12
+  },
+  "operations": {
+    "minted": 5100.0,
+    "transferred": 5100.0
+  },
+  "backend_steps": 10,
+  "status": "completed",
+  "timestamp": "2026-01-22T10:01:29.038484"
+}
