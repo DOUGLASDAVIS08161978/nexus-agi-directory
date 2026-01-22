@@ -2,7 +2,7 @@
   "mining": {
     "total_btc": 187.5,
     "blocks": 30,
-    "mining_address": "tb1q3e0b495de2fa1f29e1b913162d010bcaf1b7d2"
+    "mining_address": "tb1qf9e776cdd5cea2862320d07c4a123b77ea5e22"
   },
   "bridge": {
     "amount_wbtc": 187.5,
