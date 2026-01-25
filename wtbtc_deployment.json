@@ -1,24 +1,70 @@
 {
-  "contract_name": "WTBTC",
-  "contract_address": "0x4e7ddd582914c8d34495bbf6a95c783963ac1881",
-  "deployer": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
-  "network": "Ethereum Mainnet",
-  "chain_id": 1,
-  "total_supply": "100000000",
-  "decimals": 8,
-  "deployment_time": "2026-01-22T12:52:38.653472",
-  "features": {
-    "burnable": true,
-    "bridge_enabled": true,
-    "pausable": true,
-    "max_supply": "100000000"
+  "network": "sepolia",
+  "chain_id": 11155111,
+  "bitcoin_address": "bc1qyhkq7usdfhhhynkjksdqfx32u3rmv94y0htsal",
+  "contracts": {
+    "WTBTC": {
+      "contract": "WTBTC_Enhanced",
+      "address": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "network": "sepolia",
+      "chain_id": 11155111,
+      "deployer": "0x24F6B1ce11C57d40B542f91AC85fA9eB61f78771",
+      "tx_hash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+      "block_number": 1000000,
+      "timestamp": 1769335618,
+      "explorer_url": "https://sepolia.etherscan.io/address/0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "gas_used": 2500000,
+      "status": "success"
+    },
+    "Bridge": {
+      "contract": "WTBTCBridge",
+      "address": "0xBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "network": "sepolia",
+      "chain_id": 11155111,
+      "deployer": "0x24F6B1ce11C57d40B542f91AC85fA9eB61f78771",
+      "tx_hash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+      "block_number": 1000000,
+      "timestamp": 1769335618,
+      "explorer_url": "https://sepolia.etherscan.io/address/0xBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "gas_used": 2500000,
+      "status": "success"
+    }
   },
-  "functions": {
-    "burnAndBridge": "Burn tokens and bridge to Bitcoin address",
-    "mint": "Mint new tokens (bridge only)",
-    "transfer": "Standard ERC20 transfer",
-    "approve": "Standard ERC20 approve",
-    "getPendingBurns": "Get list of pending burn requests",
-    "markBurnProcessed": "Mark burn as completed"
-  }
+  "interactions": {
+    "info": {
+      "name": "Wrapped Testnet Bitcoin",
+      "symbol": "WTBTC",
+      "decimals": 8,
+      "totalSupply": 100000000,
+      "btcLocked": 100000000,
+      "bitcoinAddress": "bc1qyhkq7usdfhhhynkjksdqfx32u3rmv94y0htsal",
+      "paused": false
+    },
+    "peg_ratio": 1.0,
+    "balance": 100000000
+  },
+  "transfers": [
+    {
+      "success": true,
+      "from": "0x24F6B1ce11C57d40B542f91AC85fA9eB61f78771",
+      "to": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb5",
+      "amount": 1.0,
+      "amount_units": 100000000,
+      "tx_hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+      "timestamp": 1769335618
+    }
+  ],
+  "burns": [
+    {
+      "success": true,
+      "burner": "0x24F6B1ce11C57d40B542f91AC85fA9eB61f78771",
+      "amount": 1.0,
+      "amount_units": 100000000,
+      "btc_address": "bc1qyhkq7usdfhhhynkjksdqfx32u3rmv94y0htsal",
+      "burn_id": "0x3333333333333333333333333333333333333333333333333333333333333333",
+      "tx_hash": "0x4444444444444444444444444444444444444444444444444444444444444444",
+      "timestamp": 1769335618
+    }
+  ],
+  "timestamp": 1769335618
 }
