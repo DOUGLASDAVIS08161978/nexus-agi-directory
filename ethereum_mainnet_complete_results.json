@@ -1,0 +1,25 @@
+{
+  "execution_summary": {
+    "status": "completed",
+    "timestamp": "2026-01-22T00:17:39Z",
+    "total_operations": 9
+  },
+  "mining": {
+    "total_btc": 156.25,
+    "blocks_mined": 25,
+    "mining_address": "tb1qd1ca4859412a4bd39f65f2f066a4836bce011b"
+  },
+  "web3_connection": {
+    "wallet_type": "MetaMask",
+    "network": "Ethereum Mainnet",
+    "chain_id": 1
+  },
+  "operations": {
+    "minted": 156.25,
+    "transferred": 156.25,
+    "burned": 156.25,
+    "deposited": 156.25
+  },
+  "destination": "bc1qyhkq7usdfhhhynkjksdqfx32u3rmv94y0htsal",
+  "status": "all_completed"
+}

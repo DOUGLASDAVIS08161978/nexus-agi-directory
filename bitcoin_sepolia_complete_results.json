@@ -1,0 +1,282 @@
+{
+  "mining": {
+    "blocks": 15,
+    "total_btc": 93.75,
+    "mining_address": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+    "block_details": [
+      {
+        "block_number": 2600000,
+        "block_hash": "00000000109869073113dfdfe9347b56b65e5a2fcba70431619a79ef6e3c1374",
+        "timestamp": "2026-01-21T18:12:19.541495",
+        "reward": 6.25,
+        "transactions": 3381,
+        "size": 993587,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 15
+      },
+      {
+        "block_number": 2600001,
+        "block_hash": "000000006a16d4822e726c862fe6aa7523603fbd272a5512b2cf5bd84e9be3be",
+        "timestamp": "2026-01-21T18:12:19.794220",
+        "reward": 6.25,
+        "transactions": 3107,
+        "size": 957575,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 14
+      },
+      {
+        "block_number": 2600002,
+        "block_hash": "00000000a8d6fc38fc1c654c89c190c6812d9c2e784c69a3784e3edb68165ecb",
+        "timestamp": "2026-01-21T18:12:20.045083",
+        "reward": 6.25,
+        "transactions": 2729,
+        "size": 1307351,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 13
+      },
+      {
+        "block_number": 2600003,
+        "block_hash": "00000000bb26bf1bcdfad1af303e476a3f9302f86b0c02058729c97d967b6ce7",
+        "timestamp": "2026-01-21T18:12:20.296202",
+        "reward": 6.25,
+        "transactions": 2711,
+        "size": 894227,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 12
+      },
+      {
+        "block_number": 2600004,
+        "block_hash": "000000008d69d5034540f9d6270a8e2ec6d82f1732925a0b45969bf3d9c3b933",
+        "timestamp": "2026-01-21T18:12:20.547803",
+        "reward": 6.25,
+        "transactions": 2789,
+        "size": 1329191,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 11
+      },
+      {
+        "block_number": 2600005,
+        "block_hash": "0000000083c8db331d5755501d14ec8bcecb41d9c124d8f8cf5fbca0d317153a",
+        "timestamp": "2026-01-21T18:12:20.798598",
+        "reward": 6.25,
+        "transactions": 3192,
+        "size": 976261,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 10
+      },
+      {
+        "block_number": 2600006,
+        "block_hash": "00000000d554937790ff2ac3373fb1ce36a95e548fa9a77f1d7f5cf0814774dd",
+        "timestamp": "2026-01-21T18:12:21.049930",
+        "reward": 6.25,
+        "transactions": 2726,
+        "size": 888104,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 9
+      },
+      {
+        "block_number": 2600007,
+        "block_hash": "0000000083b811bcf60a4ad365c2b8bd01eec43905dd9b327a50260d96424657",
+        "timestamp": "2026-01-21T18:12:21.300538",
+        "reward": 6.25,
+        "transactions": 2771,
+        "size": 1105658,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 8
+      },
+      {
+        "block_number": 2600008,
+        "block_hash": "0000000058285f656f140b6488233ee1dc538b90d0f95a98d636bf43acc1e149",
+        "timestamp": "2026-01-21T18:12:21.552131",
+        "reward": 6.25,
+        "transactions": 2887,
+        "size": 1351655,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 7
+      },
+      {
+        "block_number": 2600009,
+        "block_hash": "000000001c685148d9b0d0f413ef50ceb292f9e0daf5ea97f887a56fe8215dd2",
+        "timestamp": "2026-01-21T18:12:21.803646",
+        "reward": 6.25,
+        "transactions": 2968,
+        "size": 1388915,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 6
+      },
+      {
+        "block_number": 2600010,
+        "block_hash": "00000000451680cab618b224633952f898a69235cce71bf8271c109cc03381e3",
+        "timestamp": "2026-01-21T18:12:22.054802",
+        "reward": 6.25,
+        "transactions": 2021,
+        "size": 998754,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 5
+      },
+      {
+        "block_number": 2600011,
+        "block_hash": "000000003fb6b811425420a83cd28f2c0148c5b91102153838ab3b036eb5d168",
+        "timestamp": "2026-01-21T18:12:22.305984",
+        "reward": 6.25,
+        "transactions": 2099,
+        "size": 1312834,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 4
+      },
+      {
+        "block_number": 2600012,
+        "block_hash": "000000003aa279ce97bbd5d43450239dd2f1bc1e3ad0eb4dd6ae6fb91554e55b",
+        "timestamp": "2026-01-21T18:12:22.556458",
+        "reward": 6.25,
+        "transactions": 2788,
+        "size": 1272298,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 3
+      },
+      {
+        "block_number": 2600013,
+        "block_hash": "000000003cc26b4454deecc136c1c957220da4ece5d47cb6e559922c69d5f726",
+        "timestamp": "2026-01-21T18:12:22.807426",
+        "reward": 6.25,
+        "transactions": 1733,
+        "size": 927915,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 2
+      },
+      {
+        "block_number": 2600014,
+        "block_hash": "00000000f1c07ae4ade03f58425b6fdfc54e1af534f0ef436e3d2b76fe74067a",
+        "timestamp": "2026-01-21T18:12:23.058768",
+        "reward": 6.25,
+        "transactions": 1441,
+        "size": 904371,
+        "difficulty": 1.0,
+        "miner": "tb1q62f52b6a9512c40e6ab2e0fa8da76fdac68f6a",
+        "confirmations": 1
+      }
+    ]
+  },
+  "bridge": {
+    "lock_transaction": {
+      "lock_id": "ae5951cf18d8fab19dcaf70a5ddb25abbdd8635d877066426ecb71289d87807c",
+      "amount_btc": 93.75,
+      "amount_satoshis": 9375000000,
+      "utxos_used": 15,
+      "lock_address": "tb1q4a7b5f30ad1a454ba739e7c98ecb71d879ac03",
+      "timestamp": "2026-01-21T18:12:25.061552",
+      "status": "locked",
+      "lock_txid": "e5baeaca0afb23df1c8e1e110bdfb189df8383c06cab77aeda4ef848810052ac"
+    },
+    "bridge_transaction": {
+      "bridge_id": "af0c9ceec3748adb5678ff87e4d13d40246bd0b4defc5283280af51ec7f8fc90",
+      "lock_id": "ae5951cf18d8fab19dcaf70a5ddb25abbdd8635d877066426ecb71289d87807c",
+      "amount_btc": 93.75,
+      "amount_wbtc": 93.75,
+      "amount_wbtc_wei": 9375000000,
+      "source_network": "Bitcoin Testnet",
+      "dest_network": "Ethereum Sepolia Testnet",
+      "dest_address": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+      "proof": {
+        "lock_id": "ae5951cf18d8fab19dcaf70a5ddb25abbdd8635d877066426ecb71289d87807c",
+        "merkle_root": "c5015a5dbb43d77f51e9d7ce89a0ffef479b7c6c9ccdbef8064043f3dc18ba7b",
+        "merkle_path": [
+          "5633a8b5744c5fc206442b33cf979a28b06f3ce3925fafffa3128f8ce46189a1",
+          "14a269b95cd955dc2be7052482a972c0e732b03a4ccc41a4a5a9c0b0ad4a5371",
+          "bd952c84968fd9e486939b3ec2fab8d08662d9897fd7e1365356fee9caf14471",
+          "f10f9f8fe99c0cf6d63c97144d1a919183e9019b0a68ad2a8090a741948f403d"
+        ],
+        "block_height": 2600000,
+        "confirmations": 6
+      },
+      "status": "pending",
+      "submission_tx": "0x7f40c322dbfaf17d70a584c4bc3d0d043ccc149652170bbc95ed605a72d3ac92"
+    }
+  },
+  "operations": {
+    "mint": {
+      "mint_id": "61d4b7fd73e17aa7acffe650a2ab98266a839399951309445560c9ff074019c7",
+      "bridge_id": "af0c9ceec3748adb5678ff87e4d13d40246bd0b4defc5283280af51ec7f8fc90",
+      "token": "WBTC",
+      "contract": "0x7c7b52789dfea42856414298ac6b7298e21ec88e",
+      "amount_wbtc": 93.75,
+      "amount_wei": 9375000000,
+      "recipient": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+      "timestamp": "2026-01-21T18:12:29.366799",
+      "tx_hash": "0xda17ee7f162ee25e83ebd94dddd8cd57f280bcbabf458b8794b8a9ac8b1ff3ab",
+      "block_number": 5432100,
+      "gas_used": 85000,
+      "status": "success"
+    },
+    "transfer": {
+      "transfer_id": "56f930086515f7f849dfcd631d5151c426e50c846da4fd0d09c4a2f06bff2233",
+      "from": "0x7c7b52789dfea42856414298ac6b7298e21ec88e",
+      "to": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+      "amount_wbtc": 93.75,
+      "amount_wei": 9375000000,
+      "timestamp": "2026-01-21T18:12:30.868948",
+      "tx_hash": "0x44e8ff6628ece26c91473a0dac1c0a42ea091f6b7813f7b6165b9439e84e326c",
+      "block_number": 5432101,
+      "gas_used": 45000,
+      "status": "success"
+    },
+    "burn": {
+      "burn_id": "81df33881a9f9bc4f2d66973e2a8bc61f4806256736c6d6fa3ce248fb6382282",
+      "token": "WBTC",
+      "contract": "0x7c7b52789dfea42856414298ac6b7298e21ec88e",
+      "amount_wbtc": 93.75,
+      "amount_wei": 9375000000,
+      "burner": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+      "timestamp": "2026-01-21T18:12:32.370744",
+      "tx_hash": "0x3229c84cc65350476f32f27528dc311bd86e9545a79906b8a4f509078c638076",
+      "block_number": 5432102,
+      "gas_used": 55000,
+      "status": "success"
+    }
+  },
+  "receipt": {
+    "receipt_id": "c06566d1a2f2b7fea55f5be14ea2e0cfe71d538694cd75d91a98f292cd8b4ffd",
+    "mint_id": "61d4b7fd73e17aa7acffe650a2ab98266a839399951309445560c9ff074019c7",
+    "burn_id": "81df33881a9f9bc4f2d66973e2a8bc61f4806256736c6d6fa3ce248fb6382282",
+    "transfer_id": "56f930086515f7f849dfcd631d5151c426e50c846da4fd0d09c4a2f06bff2233",
+    "mint_tx": "0xda17ee7f162ee25e83ebd94dddd8cd57f280bcbabf458b8794b8a9ac8b1ff3ab",
+    "burn_tx": "0x3229c84cc65350476f32f27528dc311bd86e9545a79906b8a4f509078c638076",
+    "transfer_tx": "0x44e8ff6628ece26c91473a0dac1c0a42ea091f6b7813f7b6165b9439e84e326c",
+    "amount_wbtc": 93.75,
+    "amount_wei": 9375000000,
+    "recipient": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "network": "Ethereum Sepolia",
+    "timestamp": "2026-01-21T18:12:34.173089",
+    "status": "completed",
+    "signatures": {
+      "sha256": "c1af3a0324a6b63c3eb3383d0e7e761a984145d0ae566cc41d49d47431291679",
+      "ecdsa_r": "3af4aee8ab243b24517d247250377ccedc6323b15bf46b24c8269fba95abf695",
+      "ecdsa_s": "386d922f69855d13c816ae72603b7884bdac1b40d42f46d17ef2bf2b894650b0",
+      "v": 27,
+      "algorithm": "ECDSA-secp256k1"
+    }
+  },
+  "summary": {
+    "total_minted": 93.75,
+    "total_transferred": 93.75,
+    "total_burned": 93.75,
+    "final_address": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+    "network": "Ethereum Sepolia Testnet",
+    "chain_id": 11155111
+  },
+  "timestamp": "2026-01-21T18:12:35.675025"
+}

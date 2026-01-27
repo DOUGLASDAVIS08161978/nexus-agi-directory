@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "network": "Monad Testnet",
+  "wallet": "0x24f6b1ce11c57d40b542f91ac85fa9eb61f78771",
+  "amount": 0.5,
+  "token": "MON",
+  "tx_hash": "0x9a1e64fc92bb04c16cbe933ef5b88c5c34aa61131ac0f82c402f5923f0e1b4f3",
+  "block": 12345678,
+  "timestamp": "2026-01-22T18:39:32.768378",
+  "faucet": "Alchemy",
+  "next_claim": "24 hours"
+}
