@@ -81,12 +81,12 @@ fi
 echo ""
 
 # Step 4: Deploy WTBTC
-echo "Step 4: Deploying WTBTC to Monad testnet..."
+echo "Step 4: Deploying WTBTC..."
 echo "────────────────────────────────────────────────────────────────────────────────"
 echo ""
 
-# Use standalone version (pure Python, no problematic dependencies)
-python3 deploy_termux_standalone.py
+# Use working version that auto-selects a working network
+python3 deploy_working.py
 
 # Check if deployment succeeded
 if [ $? -eq 0 ]; then
@@ -97,17 +97,16 @@ if [ $? -eq 0 ]; then
     echo ""
 
     # Show deployment summary
-    if [ -f real_wtbtc_deployment_termux.json ]; then
+    if [ -f wtbtc_deployment_success.json ]; then
         echo "📊 Deployment Summary:"
         python3 << 'PYEOF'
 import json
-with open('real_wtbtc_deployment_termux.json') as f:
+with open('wtbtc_deployment_success.json') as f:
     d = json.load(f)
-    print(f"\n📍 Contract Addresses:")
-    print(f"   WTBTC Token: {d['contracts']['WTBTC']['address']}")
-    print(f"   Bridge: {d['contracts']['Bridge']['address']}")
+    print(f"\n📍 Network: {d['network']}")
+    print(f"📍 WTBTC Token: {d['contract']}")
     print(f"\n🔗 Block Explorer:")
-    print(f"   {d['contracts']['WTBTC']['explorer']}")
+    print(f"   {d['explorer']}")
 PYEOF
 
         echo ""
@@ -117,21 +116,18 @@ PYEOF
         echo ""
         echo "1. Open Bitget app"
         echo "2. Tap 'Assets' → 'Deposit'"
-        echo "3. Add Monad Testnet network:"
-        echo "   - Network: Monad Testnet"
-        echo "   - RPC: https://testnet.monad.xyz"
-        echo "   - Chain ID: 41454"
-        echo "   - Symbol: MON"
+        echo "3. Make sure you have the testnet network added (check deployment output)"
         echo ""
         echo "4. Add Custom Token:"
 
         python3 << 'PYEOF'
 import json
-with open('real_wtbtc_deployment_termux.json') as f:
+with open('wtbtc_deployment_success.json') as f:
     d = json.load(f)
-    print(f"   - Contract: {d['contracts']['WTBTC']['address']}")
+    print(f"   - Contract: {d['contract']}")
     print(f"   - Symbol: WTBTC")
     print(f"   - Decimals: 8")
+    print(f"   - Network: {d['network']}")
 PYEOF
 
         echo ""
@@ -144,8 +140,8 @@ else
     echo ""
     echo -e "${RED}❌ Deployment failed${NC}"
     echo "Check errors above. Common issues:"
-    echo "  - No MON tokens (get from faucet)"
+    echo "  - No testnet tokens (get from faucet)"
     echo "  - Network connection"
-    echo "  - Already deployed (check real_wtbtc_deployment_termux.json)"
+    echo "  - Already deployed (check wtbtc_deployment_success.json)"
     exit 1
 fi
