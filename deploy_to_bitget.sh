@@ -42,10 +42,10 @@ echo ""
 # Step 2: Install dependencies
 echo "Step 2: Installing dependencies..."
 echo "────────────────────────────────────────────────────────────────────────────────"
-# Only install packages that work in Termux (no web3 - requires Rust)
-pip3 install --quiet eth-account python-dotenv requests 2>/dev/null || {
+# Only install pure Python packages (no Rust compilation needed)
+pip3 install --quiet ecdsa pycryptodome requests 2>/dev/null || {
     echo "Installing packages..."
-    pip3 install eth-account python-dotenv requests
+    pip3 install ecdsa pycryptodome requests
 }
 echo -e "${GREEN}✅ Dependencies installed${NC}"
 echo ""
@@ -85,8 +85,8 @@ echo "Step 4: Deploying WTBTC to Monad testnet..."
 echo "────────────────────────────────────────────────────────────────────────────────"
 echo ""
 
-# Use Termux-compatible version (no web3.py dependency)
-python3 deploy_real_wtbtc_termux.py
+# Use standalone version (pure Python, no problematic dependencies)
+python3 deploy_termux_standalone.py
 
 # Check if deployment succeeded
 if [ $? -eq 0 ]; then
