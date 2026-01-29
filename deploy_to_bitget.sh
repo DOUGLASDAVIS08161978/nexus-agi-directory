@@ -42,9 +42,10 @@ echo ""
 # Step 2: Install dependencies
 echo "Step 2: Installing dependencies..."
 echo "────────────────────────────────────────────────────────────────────────────────"
-pip3 install --quiet web3 eth-account python-dotenv 2>/dev/null || {
+# Only install packages that work in Termux (no web3 - requires Rust)
+pip3 install --quiet eth-account python-dotenv requests 2>/dev/null || {
     echo "Installing packages..."
-    pip3 install web3 eth-account python-dotenv
+    pip3 install eth-account python-dotenv requests
 }
 echo -e "${GREEN}✅ Dependencies installed${NC}"
 echo ""
@@ -84,7 +85,8 @@ echo "Step 4: Deploying WTBTC to Monad testnet..."
 echo "────────────────────────────────────────────────────────────────────────────────"
 echo ""
 
-python3 deploy_real_wtbtc.py
+# Use Termux-compatible version (no web3.py dependency)
+python3 deploy_real_wtbtc_termux.py
 
 # Check if deployment succeeded
 if [ $? -eq 0 ]; then
@@ -95,18 +97,15 @@ if [ $? -eq 0 ]; then
     echo ""
 
     # Show deployment summary
-    if [ -f real_wtbtc_deployment.json ]; then
+    if [ -f real_wtbtc_deployment_termux.json ]; then
         echo "📊 Deployment Summary:"
         python3 << 'PYEOF'
 import json
-with open('real_wtbtc_deployment.json') as f:
+with open('real_wtbtc_deployment_termux.json') as f:
     d = json.load(f)
     print(f"\n📍 Contract Addresses:")
     print(f"   WTBTC Token: {d['contracts']['WTBTC']['address']}")
     print(f"   Bridge: {d['contracts']['Bridge']['address']}")
-    print(f"\n💰 Your Balances:")
-    print(f"   Deployer wallet: {d['balances']['deployer']} WTBTC")
-    print(f"   Bitget wallet: {d['balances']['bitget_wallet']} WTBTC")
     print(f"\n🔗 Block Explorer:")
     print(f"   {d['contracts']['WTBTC']['explorer']}")
 PYEOF
@@ -128,12 +127,11 @@ PYEOF
 
         python3 << 'PYEOF'
 import json
-with open('real_wtbtc_deployment.json') as f:
+with open('real_wtbtc_deployment_termux.json') as f:
     d = json.load(f)
     print(f"   - Contract: {d['contracts']['WTBTC']['address']}")
     print(f"   - Symbol: WTBTC")
     print(f"   - Decimals: 8")
-    print(f"\n5. Check balance: {d['balances']['bitget_wallet']} WTBTC")
 PYEOF
 
         echo ""
@@ -148,6 +146,6 @@ else
     echo "Check errors above. Common issues:"
     echo "  - No MON tokens (get from faucet)"
     echo "  - Network connection"
-    echo "  - Already deployed (check real_wtbtc_deployment.json)"
+    echo "  - Already deployed (check real_wtbtc_deployment_termux.json)"
     exit 1
 fi
