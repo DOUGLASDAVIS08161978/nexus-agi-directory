@@ -1,0 +1,58 @@
+{
+  "network": "monad",
+  "chain_id": 41454,
+  "bitcoin_address": "bc1qyhkq7usdfhhhynkjksdqfx32u3rmv94y0htsal",
+  "contracts": {
+    "WTBTC": {
+      "contract": "WTBTC_Enhanced",
+      "address": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "network": "monad",
+      "chain_id": 41454,
+      "deployer": "0x24F6B1ce11C57d40B542f91AC85fA9eB61f78771",
+      "tx_hash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+      "block_number": 1000000,
+      "timestamp": 1769712667,
+      "explorer_url": "https://explorer.testnet.monad.xyz/address/0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "gas_used": 2500000,
+      "status": "success"
+    },
+    "Bridge": {
+      "contract": "WTBTCBridge",
+      "address": "0xBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "network": "monad",
+      "chain_id": 41454,
+      "deployer": "0x24F6B1ce11C57d40B542f91AC85fA9eB61f78771",
+      "tx_hash": "0x1111111111111111111111111111111111111111111111111111111111111111",
+      "block_number": 1000000,
+      "timestamp": 1769712667,
+      "explorer_url": "https://explorer.testnet.monad.xyz/address/0xBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+      "gas_used": 2500000,
+      "status": "success"
+    }
+  },
+  "interactions": {
+    "info": {
+      "name": "Wrapped Testnet Bitcoin",
+      "symbol": "WTBTC",
+      "decimals": 8,
+      "totalSupply": 100000000,
+      "btcLocked": 100000000,
+      "bitcoinAddress": "bc1qyhkq7usdfhhhynkjksdqfx32u3rmv94y0htsal",
+      "paused": false
+    },
+    "peg_ratio": 1.0,
+    "balance": 100000000
+  },
+  "transfers": [
+    {
+      "success": true,
+      "from": "0x24F6B1ce11C57d40B542f91AC85fA9eB61f78771",
+      "to": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb5",
+      "amount": 1.0,
+      "amount_units": 100000000,
+      "tx_hash": "0x2222222222222222222222222222222222222222222222222222222222222222",
+      "timestamp": 1769712667
+    }
+  ],
+  "timestamp": 1769712667
+}
