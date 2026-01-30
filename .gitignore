@@ -39,3 +39,4 @@ coverage/
 .vercel/
 .netlify/
 __pycache__/
+.well-known/*.backup
