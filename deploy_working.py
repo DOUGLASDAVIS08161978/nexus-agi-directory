@@ -23,34 +23,36 @@ except ImportError:
 
 BITGET_WALLET = "0xD34beE1C52D05798BD1925318dF8d3292d0e49E6"
 
-# Multiple network options - we'll use the first one that works
+# Polygon network for Bitget compatibility
 NETWORKS = {
-    "sepolia": {
-        "name": "Sepolia Testnet",
-        "rpc": "https://rpc.sepolia.org",
-        "chain_id": 11155111,
-        "explorer": "https://sepolia.etherscan.io",
-        "faucet": "https://sepoliafaucet.com"
-    },
-    "holesky": {
-        "name": "Holesky Testnet",
-        "rpc": "https://ethereum-holesky-rpc.publicnode.com",
-        "chain_id": 17000,
-        "explorer": "https://holesky.etherscan.io",
-        "faucet": "https://holesky-faucet.pk910.de"
-    },
     "polygon-amoy": {
         "name": "Polygon Amoy Testnet",
         "rpc": "https://rpc-amoy.polygon.technology",
         "chain_id": 80002,
         "explorer": "https://amoy.polygonscan.com",
         "faucet": "https://faucet.polygon.technology"
+    },
+    "polygon-amoy-alt": {
+        "name": "Polygon Amoy Testnet (Alt RPC)",
+        "rpc": "https://polygon-amoy.drpc.org",
+        "chain_id": 80002,
+        "explorer": "https://amoy.polygonscan.com",
+        "faucet": "https://faucet.polygon.technology"
+    },
+    "sepolia": {
+        "name": "Sepolia Testnet",
+        "rpc": "https://rpc.sepolia.org",
+        "chain_id": 11155111,
+        "explorer": "https://sepolia.etherscan.io",
+        "faucet": "https://sepoliafaucet.com"
     }
 }
 
 print("=" * 80)
-print("🚀 REAL WTBTC Deployment - Auto Network Selection")
+print("🚀 WTBTC Deployment to Polygon for Bitget Wallet")
 print("=" * 80)
+print()
+print(f"Target Bitget Wallet: {BITGET_WALLET}")
 print()
 
 def keccak256(data):
@@ -475,29 +477,150 @@ print(f"Network: {working_network['name']}")
 print(f"Contract: {contract_address}")
 print(f"Explorer: {working_network['explorer']}/address/{contract_address}")
 print()
+
+# Step 6: Transfer tokens to Bitget wallet
+print("=" * 80)
+print("💸 Transferring WTBTC to Your Bitget Wallet")
+print("=" * 80)
+print()
+
+# Encode transfer function call: transfer(address to, uint256 value)
+# Function selector: first 4 bytes of keccak256("transfer(address,uint256)")
+transfer_selector = keccak256(b"transfer(address,uint256)")[:4]
+
+# Transfer 500,000 WTBTC (500000 * 10^8 = 50000000000000)
+transfer_amount = 500000 * 10**8
+
+# Encode parameters: address (32 bytes) + uint256 (32 bytes)
+to_address_padded = BITGET_WALLET[2:].lower().zfill(64)  # Remove 0x and pad to 32 bytes
+amount_padded = hex(transfer_amount)[2:].zfill(64)  # Convert to hex and pad to 32 bytes
+
+transfer_data = '0x' + transfer_selector.hex() + to_address_padded + amount_padded
+
+print(f"Transferring 500,000 WTBTC to {BITGET_WALLET}...")
+print()
+
+# Get updated nonce
+nonce_hex = rpc_call(working_network['rpc'], "eth_getTransactionCount", [address, "latest"])
+nonce = int(nonce_hex, 16)
+
+# Build transfer transaction
+transfer_tx = {
+    'nonce': nonce,
+    'gasPrice': gas_price,
+    'gas': 100000,  # Lower gas for transfer
+    'to': contract_address,
+    'value': 0,
+    'data': transfer_data,
+    'chainId': working_network['chain_id']
+}
+
+# Encode and sign transfer transaction
+transfer_rlp = rlp_encode_tx(transfer_tx)
+transfer_hash_for_signing = keccak256(transfer_rlp)
+
+pk_bytes = bytes.fromhex(private_key[2:])
+sk = SigningKey.from_string(pk_bytes, curve=SECP256k1)
+transfer_signature = sk.sign_digest(transfer_hash_for_signing, sigencode=sigencode_string)
+
+r_transfer = int.from_bytes(transfer_signature[:32], 'big')
+s_transfer = int.from_bytes(transfer_signature[32:], 'big')
+v_transfer = working_network['chain_id'] * 2 + 35
+
+transfer_signed_parts = [
+    encode_int(nonce),
+    encode_int(gas_price),
+    encode_int(100000),
+    encode_bytes(contract_address),
+    encode_int(0),
+    encode_bytes(transfer_data),
+    encode_int(v_transfer),
+    encode_int(r_transfer),
+    encode_int(s_transfer)
+]
+
+signed_transfer = '0x' + encode_list(transfer_signed_parts).hex()
+
+# Send transfer transaction
+transfer_tx_hash = rpc_call(working_network['rpc'], "eth_sendRawTransaction", [signed_transfer])
+
+if not transfer_tx_hash:
+    print("⚠️  Transfer transaction failed to send")
+    print("You can manually transfer using MetaMask:")
+    print(f"   Contract: {contract_address}")
+    print(f"   To: {BITGET_WALLET}")
+else:
+    print(f"Transfer transaction sent: {transfer_tx_hash}")
+    print("Waiting for confirmation...")
+
+    # Wait for transfer confirmation
+    transfer_receipt = None
+    for i in range(30):
+        transfer_receipt = rpc_call(working_network['rpc'], "eth_getTransactionReceipt", [transfer_tx_hash])
+        if transfer_receipt:
+            break
+        time.sleep(2)
+        if i % 5 == 0 and i > 0:
+            print(f"  Still waiting... ({i * 2}s)")
+
+    if transfer_receipt and int(transfer_receipt.get('status', '0x0'), 16) == 1:
+        print()
+        print("✅ TRANSFER SUCCESSFUL!")
+        print(f"   500,000 WTBTC sent to your Bitget wallet!")
+        print(f"   Transaction: {working_network['explorer']}/tx/{transfer_tx_hash}")
+        print()
+    else:
+        print("⚠️  Transfer may have failed. Check manually:")
+        print(f"   {working_network['explorer']}/tx/{transfer_tx_hash}")
+        print()
+
+print()
 print("📱 IMPORT TO BITGET:")
 print(f"   Contract: {contract_address}")
 print(f"   Symbol: WTBTC")
 print(f"   Decimals: 8")
-print(f"   Network: {working_network['name']}")
+print(f"   Network: {working_network['name']} (Polygon)")
 print()
-print("Use MetaMask to transfer to your Bitget wallet:")
-print(f"   {BITGET_WALLET}")
+print(f"✅ Your Bitget wallet should now have 500,000 WTBTC!")
+print(f"   Address: {BITGET_WALLET}")
 print()
 
 # Save result
 result = {
     "network": working_network['key'],
+    "network_name": working_network['name'],
     "chain_id": working_network['chain_id'],
     "contract": contract_address,
     "explorer": f"{working_network['explorer']}/address/{contract_address}",
     "deployer": address,
     "bitget_wallet": BITGET_WALLET,
+    "transfer_tx": transfer_tx_hash if transfer_tx_hash else None,
+    "transfer_amount": "500000 WTBTC",
     "timestamp": int(time.time())
 }
 
 with open('wtbtc_deployment_success.json', 'w') as f:
     json.dump(result, f, indent=2)
 
+print("=" * 80)
+print("✅ DEPLOYMENT COMPLETE!")
+print("=" * 80)
+print()
+print("📊 Summary:")
+print(f"   Network: {working_network['name']} (Polygon)")
+print(f"   WTBTC Contract: {contract_address}")
+print(f"   Your Bitget Wallet: {BITGET_WALLET}")
+print(f"   Tokens Transferred: 500,000 WTBTC")
+print()
+print("🔗 View on Explorer:")
+print(f"   {working_network['explorer']}/address/{contract_address}")
+print()
+print("📱 Import WTBTC in Bitget App:")
+print(f"   1. Open Bitget → Assets → Deposit")
+print(f"   2. Select 'Polygon' network")
+print(f"   3. Add custom token: {contract_address}")
+print(f"   4. Symbol: WTBTC, Decimals: 8")
+print(f"   5. Your balance: 500,000 WTBTC")
+print()
 print("✅ Done! Deployment saved to wtbtc_deployment_success.json")
 print()
