@@ -3,109 +3,215 @@
     "id": "agi://service/openai/chat-completions:v1",
     "name": "OpenAI Chat Completions",
     "endpoint": "https://api.openai.com/v1/chat/completions",
-    "capabilities": ["chat", "stream", "function_calling"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${OPENAI_API_KEY}"},
-    "headers": {"Content-Type": "application/json", "OpenAI-Beta": "assistants=v2 (optional)"},
+    "capabilities": [
+      "chat",
+      "stream",
+      "function_calling"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OPENAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json",
+      "OpenAI-Beta": "assistants=v2 (optional)"
+    },
     "models_param": "model",
-    "limits": {"rate": "varies by plan"},
+    "limits": {
+      "rate": "varies by plan"
+    },
     "docs": "https://platform.openai.com/docs/api-reference/chat",
     "status": "stable",
-    "reputation": {"ecosystem": "widely adopted"},
+    "reputation": {
+      "ecosystem": "widely adopted"
+    },
     "notes": "Use 'response_format' for JSON; tool calls via 'tools'."
   },
   {
     "id": "agi://service/openai/responses:v1",
     "name": "OpenAI Responses API",
     "endpoint": "https://api.openai.com/v1/responses",
-    "capabilities": ["chat", "tools", "structured_outputs", "multimodal", "stream"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${OPENAI_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "tools",
+      "structured_outputs",
+      "multimodal",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OPENAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "varies by plan"},
+    "limits": {
+      "rate": "varies by plan"
+    },
     "docs": "https://platform.openai.com/docs/api-reference/responses",
     "status": "stable",
-    "reputation": {"ecosystem": "broad"},
+    "reputation": {
+      "ecosystem": "broad"
+    },
     "notes": "Unified endpoint supporting tool calls and JSON schema outputs."
   },
   {
     "id": "agi://service/anthropic/messages:v1",
     "name": "Anthropic Claude Messages",
     "endpoint": "https://api.anthropic.com/v1/messages",
-    "capabilities": ["chat", "tool_use", "vision", "stream"],
-    "auth": {"method": "bearer", "header": "x-api-key: ${ANTHROPIC_API_KEY}"},
-    "headers": {"anthropic-version": "2023-06-01", "Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "tool_use",
+      "vision",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "x-api-key: ${ANTHROPIC_API_KEY}"
+    },
+    "headers": {
+      "anthropic-version": "2023-06-01",
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan; enterprise tiers available"},
+    "limits": {
+      "rate": "by plan; enterprise tiers available"
+    },
     "docs": "https://docs.anthropic.com/claude/reference/messages_post",
     "status": "stable",
-    "reputation": {"quality": "high reasoning"},
+    "reputation": {
+      "quality": "high reasoning"
+    },
     "notes": "Tool use via 'tool_use' content blocks and 'tools'."
   },
   {
     "id": "agi://service/google/vertex-gemini:v1",
     "name": "Google Vertex AI (Gemini)",
     "endpoint": "https://generativelanguage.googleapis.com",
-    "capabilities": ["chat", "multimodal", "stream"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GOOGLE_ACCESS_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "multimodal",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GOOGLE_ACCESS_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "project quota"},
+    "limits": {
+      "rate": "project quota"
+    },
     "docs": "https://ai.google.dev/api",
     "status": "stable",
-    "reputation": {"ecosystem": "GCP-integrated"},
+    "reputation": {
+      "ecosystem": "GCP-integrated"
+    },
     "notes": "Vertex-hosted endpoints are region/scoped; set location."
   },
   {
     "id": "agi://service/azure/openai-chat:v1",
     "name": "Azure OpenAI (Chat)",
     "endpoint": "https://{resource-name}.openai.azure.com/openai/deployments/{deployment}/chat/completions?api-version={api-version}",
-    "capabilities": ["chat", "stream", "function_calling"],
-    "auth": {"method": "bearer", "header": "api-key: ${AZURE_OPENAI_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "stream",
+      "function_calling"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "api-key: ${AZURE_OPENAI_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by SKU; per-deployment TPS"},
+    "limits": {
+      "rate": "by SKU; per-deployment TPS"
+    },
     "docs": "https://learn.microsoft.com/azure/ai-services/openai/reference",
     "status": "stable",
-    "reputation": {"trust": "enterprise, regional data controls"},
+    "reputation": {
+      "trust": "enterprise, regional data controls"
+    },
     "notes": "Model selection via Azure 'deployment' not 'model' param."
   },
   {
     "id": "agi://service/aws/bedrock-converse:v1",
     "name": "AWS Bedrock Converse",
     "endpoint": "https://bedrock-runtime.{region}.amazonaws.com/model/{modelId}/converse",
-    "capabilities": ["chat", "tools", "guardrails", "stream"],
-    "auth": {"method": "aws_sigv4"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "tools",
+      "guardrails",
+      "stream"
+    ],
+    "auth": {
+      "method": "aws_sigv4"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by account quota"},
+    "limits": {
+      "rate": "by account quota"
+    },
     "docs": "https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html",
     "status": "stable",
-    "reputation": {"ecosystem": "AWS-integrated"},
+    "reputation": {
+      "ecosystem": "AWS-integrated"
+    },
     "notes": "Model picked via path 'modelId'; supports multiple providers."
   },
   {
     "id": "agi://service/cohere/chat:v1",
     "name": "Cohere Chat",
     "endpoint": "https://api.cohere.ai/v1/chat",
-    "capabilities": ["chat", "search_grounding", "stream"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${COHERE_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "search_grounding",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${COHERE_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.cohere.com/reference/chat",
     "status": "stable",
-    "reputation": {"strength": "RAG features"},
+    "reputation": {
+      "strength": "RAG features"
+    },
     "notes": "Enable web/RAG via connectors and search options."
   },
   {
     "id": "agi://service/mistral/chat:v1",
     "name": "Mistral Chat",
     "endpoint": "https://api.mistral.ai/v1/chat/completions",
-    "capabilities": ["chat", "stream"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${MISTRAL_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${MISTRAL_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.mistral.ai/api/#tag/Chat",
     "status": "stable",
     "reputation": {},
@@ -115,11 +221,21 @@
     "id": "agi://service/meta/llama-inference:v1",
     "name": "Meta Llama Inference (Hosted)",
     "endpoint": "https://api.together.xyz/v1",
-    "capabilities": ["chat", "summarize"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${TOGETHER_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "summarize"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${TOGETHER_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by host plan"},
+    "limits": {
+      "rate": "by host plan"
+    },
     "docs": "https://www.together.ai/docs",
     "status": "hosted-via-third-parties",
     "reputation": {},
@@ -129,11 +245,22 @@
     "id": "agi://service/together/chat-completions:v1",
     "name": "Together Inference (Chat)",
     "endpoint": "https://api.together.xyz/v1/chat/completions",
-    "capabilities": ["chat", "multi-model", "stream"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${TOGETHER_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "multi-model",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${TOGETHER_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://www.together.ai/docs/inference/chat-completions",
     "status": "stable",
     "reputation": {},
@@ -143,11 +270,22 @@
     "id": "agi://service/perplexity/chat:v1",
     "name": "Perplexity API (Chat)",
     "endpoint": "https://api.perplexity.ai",
-    "capabilities": ["chat", "search_answering", "web_grounding"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${PPLX_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "search_answering",
+      "web_grounding"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${PPLX_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.perplexity.ai/",
     "status": "beta",
     "reputation": {},
@@ -157,11 +295,22 @@
     "id": "agi://service/perplexity/comet:v1",
     "name": "Perplexity Comet (Browser Mode)",
     "endpoint": "https://api.perplexity.ai",
-    "capabilities": ["search", "browse", "retrieval"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${PPLX_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "search",
+      "browse",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${PPLX_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.perplexity.ai/",
     "status": "experimental",
     "reputation": {},
@@ -171,11 +320,22 @@
     "id": "agi://service/replicate/llm-chat:v1",
     "name": "Replicate (Hosted LLMs)",
     "endpoint": "https://api.replicate.com/v1",
-    "capabilities": ["inference", "async_jobs", "webhooks"],
-    "auth": {"method": "bearer", "header": "Authorization: Token ${REPLICATE_API_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "inference",
+      "async_jobs",
+      "webhooks"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Token ${REPLICATE_API_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://replicate.com/docs/reference/http",
     "status": "stable",
     "reputation": {},
@@ -185,11 +345,22 @@
     "id": "agi://service/huggingface/inference-endpoints:v1",
     "name": "Hugging Face Inference Endpoints",
     "endpoint": "https://api.endpoints.huggingface.cloud",
-    "capabilities": ["custom-models", "scaling", "private_endpoints"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${HF_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "custom-models",
+      "scaling",
+      "private_endpoints"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${HF_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by endpoint config"},
+    "limits": {
+      "rate": "by endpoint config"
+    },
     "docs": "https://huggingface.co/docs/inference-endpoints/index",
     "status": "stable",
     "reputation": {},
@@ -199,11 +370,21 @@
     "id": "agi://service/ibm/watsonx-ai-chat:v1",
     "name": "IBM watsonx.ai (LLM Chat)",
     "endpoint": "https://us-south.ml.cloud.ibm.com",
-    "capabilities": ["chat", "prompt_tuning"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${IBM_IAM_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "prompt_tuning"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${IBM_IAM_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://cloud.ibm.com/apidocs/watsonx-ai",
     "status": "stable",
     "reputation": {},
@@ -213,11 +394,21 @@
     "id": "agi://service/nvidia/nim-llm:v1",
     "name": "NVIDIA NIM (LLM)",
     "endpoint": "https://api.nvcf.nvidia.com",
-    "capabilities": ["chat", "inference"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${NVIDIA_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "inference"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${NVIDIA_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by account"},
+    "limits": {
+      "rate": "by account"
+    },
     "docs": "https://docs.nvidia.com/nim/",
     "status": "stable",
     "reputation": {},
@@ -227,11 +418,20 @@
     "id": "agi://service/ai21/jamba-chat:v1",
     "name": "AI21 Jamba Chat",
     "endpoint": "https://api.ai21.com/studio/v1/chat",
-    "capabilities": ["chat"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${AI21_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${AI21_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.ai21.com/",
     "status": "stable",
     "reputation": {},
@@ -241,11 +441,21 @@
     "id": "agi://service/alephalpha/luminous-chat:v1",
     "name": "Aleph Alpha Luminous (Chat)",
     "endpoint": "https://api.aleph-alpha.com",
-    "capabilities": ["chat", "multilingual"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${ALEPHALPHA_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "multilingual"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${ALEPHALPHA_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.aleph-alpha.com/",
     "status": "stable",
     "reputation": {},
@@ -255,11 +465,25 @@
     "id": "agi://service/openrouter/chat:v1",
     "name": "OpenRouter (Multi-Provider Chat)",
     "endpoint": "https://openrouter.ai/api/v1/chat/completions",
-    "capabilities": ["chat", "router", "pricing_visibility", "stream"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${OPENROUTER_API_KEY}"},
-    "headers": {"Content-Type": "application/json", "HTTP-Referer": "${APP_URL}", "X-Title": "${APP_NAME}"},
+    "capabilities": [
+      "chat",
+      "router",
+      "pricing_visibility",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OPENROUTER_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json",
+      "HTTP-Referer": "${APP_URL}",
+      "X-Title": "${APP_NAME}"
+    },
     "models_param": "model",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://openrouter.ai/docs",
     "status": "stable",
     "reputation": {},
@@ -269,11 +493,22 @@
     "id": "agi://service/lmstudio/local-server:v1",
     "name": "LM Studio (Local Server)",
     "endpoint": "http://localhost:1234/v1/chat/completions",
-    "capabilities": ["chat", "local", "offline", "stream"],
-    "auth": {"method": "none"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "local",
+      "offline",
+      "stream"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "local"},
+    "limits": {
+      "rate": "local"
+    },
     "docs": "https://lmstudio.ai/docs/local-server",
     "status": "stable",
     "reputation": {},
@@ -283,11 +518,22 @@
     "id": "agi://service/ollama/local-server:v1",
     "name": "Ollama (Local Models)",
     "endpoint": "http://localhost:11434/api/chat",
-    "capabilities": ["chat", "local", "offline", "stream"],
-    "auth": {"method": "none"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "local",
+      "offline",
+      "stream"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "local"},
+    "limits": {
+      "rate": "local"
+    },
     "docs": "https://github.com/ollama/ollama/blob/main/docs/api.md#chat",
     "status": "stable",
     "reputation": {},
@@ -297,11 +543,22 @@
     "id": "agi://service/perplexity/search:v1",
     "name": "Perplexity Search",
     "endpoint": "https://api.perplexity.ai",
-    "capabilities": ["search", "retrieval", "qa"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${PPLX_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "search",
+      "retrieval",
+      "qa"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${PPLX_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.perplexity.ai/",
     "status": "beta",
     "reputation": {},
@@ -311,11 +568,22 @@
     "id": "agi://service/serpapi/google-search:v1",
     "name": "SerpAPI Google Search",
     "endpoint": "https://serpapi.com/search",
-    "capabilities": ["search", "google", "results"],
-    "auth": {"method": "key", "query": "api_key=${SERPAPI_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "search",
+      "google",
+      "results"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "api_key=${SERPAPI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://serpapi.com/search-api",
     "status": "stable",
     "reputation": {},
@@ -325,11 +593,22 @@
     "id": "agi://service/brave/search:v1",
     "name": "Brave Search API",
     "endpoint": "https://api.search.brave.com/res/v1",
-    "capabilities": ["search", "private", "web"],
-    "auth": {"method": "token", "header": "X-Subscription-Token: ${BRAVE_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "search",
+      "private",
+      "web"
+    ],
+    "auth": {
+      "method": "token",
+      "header": "X-Subscription-Token: ${BRAVE_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://api.search.brave.com/app/documentation/",
     "status": "stable",
     "reputation": {},
@@ -339,11 +618,21 @@
     "id": "agi://service/microsoft/bing-search:v1",
     "name": "Bing Search API",
     "endpoint": "https://api.bing.microsoft.com/v7.0/search",
-    "capabilities": ["search", "retrieval"],
-    "auth": {"method": "key", "header": "Ocp-Apim-Subscription-Key: ${BING_SEARCH_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "search",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "Ocp-Apim-Subscription-Key: ${BING_SEARCH_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by Azure tier"},
+    "limits": {
+      "rate": "by Azure tier"
+    },
     "docs": "https://learn.microsoft.com/bing/search-apis/bing-web-search/overview",
     "status": "stable",
     "reputation": {},
@@ -353,11 +642,20 @@
     "id": "agi://service/duckduckgo/instant-answer:v1",
     "name": "DuckDuckGo Instant Answer",
     "endpoint": "https://api.duckduckgo.com",
-    "capabilities": ["search", "qa"],
-    "auth": {"method": "none"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "search",
+      "qa"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "public"},
+    "limits": {
+      "rate": "public"
+    },
     "docs": "https://api.duckduckgo.com/api",
     "status": "stable",
     "reputation": {},
@@ -367,11 +665,20 @@
     "id": "agi://service/wikipedia/api:v1",
     "name": "Wikipedia API",
     "endpoint": "https://en.wikipedia.org/w/api.php",
-    "capabilities": ["retrieval", "knowledge"],
-    "auth": {"method": "none"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "retrieval",
+      "knowledge"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "public with etiquette"},
+    "limits": {
+      "rate": "public with etiquette"
+    },
     "docs": "https://www.mediawiki.org/wiki/API:Main_page",
     "status": "stable",
     "reputation": {},
@@ -381,11 +688,20 @@
     "id": "agi://service/arxiv/api:v1",
     "name": "arXiv API",
     "endpoint": "http://export.arxiv.org/api/query",
-    "capabilities": ["papers", "retrieval"],
-    "auth": {"method": "none"},
-    "headers": {"Accept": "application/atom+xml"},
+    "capabilities": [
+      "papers",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/atom+xml"
+    },
     "models_param": null,
-    "limits": {"rate": "public with etiquette"},
+    "limits": {
+      "rate": "public with etiquette"
+    },
     "docs": "https://info.arxiv.org/help/api/index.html",
     "status": "stable",
     "reputation": {},
@@ -395,11 +711,20 @@
     "id": "agi://service/pubmed/api:v1",
     "name": "PubMed API (NCBI E-Utilities)",
     "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
-    "capabilities": ["medical", "retrieval"],
-    "auth": {"method": "none"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "medical",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "~3 r/s public; higher with api_key"},
+    "limits": {
+      "rate": "~3 r/s public; higher with api_key"
+    },
     "docs": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
     "status": "stable",
     "reputation": {},
@@ -409,11 +734,20 @@
     "id": "agi://service/crossref/api:v1",
     "name": "Crossref Metadata API",
     "endpoint": "https://api.crossref.org",
-    "capabilities": ["scholarly", "metadata"],
-    "auth": {"method": "none"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "scholarly",
+      "metadata"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "polite pool 50 r/s with mailto"},
+    "limits": {
+      "rate": "polite pool 50 r/s with mailto"
+    },
     "docs": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
     "status": "stable",
     "reputation": {},
@@ -423,11 +757,21 @@
     "id": "agi://service/semanticscholar/api:v1",
     "name": "Semantic Scholar API",
     "endpoint": "https://api.semanticscholar.org/graph/v1",
-    "capabilities": ["papers", "citation-graph"],
-    "auth": {"method": "key", "header": "x-api-key: ${S2_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "papers",
+      "citation-graph"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "x-api-key: ${S2_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://api.semanticscholar.org/api-docs/graph",
     "status": "stable",
     "reputation": {},
@@ -437,11 +781,21 @@
     "id": "agi://service/elsevier/scopus:v1",
     "name": "Elsevier Scopus API",
     "endpoint": "https://api.elsevier.com/content/search/scopus",
-    "capabilities": ["academic", "retrieval"],
-    "auth": {"method": "key", "header": "X-ELS-APIKey: ${ELSEVIER_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "academic",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "X-ELS-APIKey: ${ELSEVIER_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by subscription"},
+    "limits": {
+      "rate": "by subscription"
+    },
     "docs": "https://dev.elsevier.com/sc_apis.html",
     "status": "stable",
     "reputation": {},
@@ -451,11 +805,21 @@
     "id": "agi://service/newsapi/news:v1",
     "name": "NewsAPI",
     "endpoint": "https://newsapi.org/v2/everything",
-    "capabilities": ["news", "retrieval"],
-    "auth": {"method": "key", "header": "X-Api-Key: ${NEWSAPI_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "news",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "X-Api-Key: ${NEWSAPI_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://newsapi.org/docs/endpoints/everything",
     "status": "stable",
     "reputation": {},
@@ -465,11 +829,21 @@
     "id": "agi://service/guardian/open-platform:v1",
     "name": "The Guardian Open Platform",
     "endpoint": "https://content.guardianapis.com",
-    "capabilities": ["news", "retrieval"],
-    "auth": {"method": "key", "query": "api-key=${GUARDIAN_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "news",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "api-key=${GUARDIAN_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by key tier"},
+    "limits": {
+      "rate": "by key tier"
+    },
     "docs": "https://open-platform.theguardian.com/documentation/",
     "status": "stable",
     "reputation": {},
@@ -479,11 +853,21 @@
     "id": "agi://service/nyt/articles:v1",
     "name": "New York Times Article Search",
     "endpoint": "https://api.nytimes.com/svc/search/v2/articlesearch.json",
-    "capabilities": ["news", "retrieval"],
-    "auth": {"method": "key", "query": "api-key=${NYT_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "news",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "api-key=${NYT_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by key tier"},
+    "limits": {
+      "rate": "by key tier"
+    },
     "docs": "https://developer.nytimes.com/docs/articlesearch-product/1/overview",
     "status": "stable",
     "reputation": {},
@@ -493,11 +877,21 @@
     "id": "agi://service/tavily/search:v1",
     "name": "Tavily Search API",
     "endpoint": "https://api.tavily.com/search",
-    "capabilities": ["search", "retrieval"],
-    "auth": {"method": "key", "header": "X-API-Key: ${TAVILY_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "search",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "X-API-Key: ${TAVILY_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.tavily.com",
     "status": "stable",
     "reputation": {},
@@ -507,11 +901,21 @@
     "id": "agi://service/pinecone/retrieval:v1",
     "name": "Pinecone Vector Search",
     "endpoint": "https://{index-name}-{project-id}.svc.{region}.pinecone.io/query",
-    "capabilities": ["vector-search", "retrieval"],
-    "auth": {"method": "key", "header": "Api-Key: ${PINECONE_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "vector-search",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "Api-Key: ${PINECONE_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.pinecone.io/reference/query",
     "status": "stable",
     "reputation": {},
@@ -521,11 +925,21 @@
     "id": "agi://service/weaviate/search:v1",
     "name": "Weaviate Search",
     "endpoint": "https://{cluster-id}.weaviate.network/v1/graphql",
-    "capabilities": ["vector-search", "retrieval"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${WEAVIATE_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "vector-search",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${WEAVIATE_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://weaviate.io/developers/weaviate/api/graphql",
     "status": "stable",
     "reputation": {},
@@ -535,11 +949,21 @@
     "id": "agi://service/qdrant/search:v1",
     "name": "Qdrant Search",
     "endpoint": "https://{cluster-id}.qdrant.io/v1",
-    "capabilities": ["vector-search", "retrieval"],
-    "auth": {"method": "key", "header": "api-key: ${QDRANT_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "vector-search",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "api-key: ${QDRANT_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://qdrant.tech/documentation/",
     "status": "stable",
     "reputation": {},
@@ -549,11 +973,21 @@
     "id": "agi://service/milvus/search:v1",
     "name": "Milvus Vector DB",
     "endpoint": "https://{host}/v1",
-    "capabilities": ["vector-search", "retrieval"],
-    "auth": {"method": "bearer", "optional": true},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "vector-search",
+      "retrieval"
+    ],
+    "auth": {
+      "method": "bearer",
+      "optional": true
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by deployment"},
+    "limits": {
+      "rate": "by deployment"
+    },
     "docs": "https://milvus.io/docs",
     "status": "varies",
     "reputation": {},
@@ -563,11 +997,24 @@
     "id": "agi://service/openai/vision:v1",
     "name": "OpenAI Vision (GPT-4o, GPT-4.1, GPT-4v)",
     "endpoint": "https://api.openai.com/v1/chat/completions",
-    "capabilities": ["vision", "multimodal", "ocr", "chat", "stream"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${OPENAI_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "vision",
+      "multimodal",
+      "ocr",
+      "chat",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OPENAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "varies by plan"},
+    "limits": {
+      "rate": "varies by plan"
+    },
     "docs": "https://platform.openai.com/docs/guides/vision",
     "status": "stable",
     "reputation": {},
@@ -577,11 +1024,21 @@
     "id": "agi://service/openai/tts:v1",
     "name": "OpenAI Text-to-Speech",
     "endpoint": "https://api.openai.com/v1/audio/speech",
-    "capabilities": ["tts", "audio"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${OPENAI_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "tts",
+      "audio"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OPENAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "varies by plan"},
+    "limits": {
+      "rate": "varies by plan"
+    },
     "docs": "https://platform.openai.com/docs/api-reference/audio/createSpeech",
     "status": "stable",
     "reputation": {},
@@ -591,11 +1048,21 @@
     "id": "agi://service/openai/stt:v1",
     "name": "OpenAI Speech-to-Text (Whisper)",
     "endpoint": "https://api.openai.com/v1/audio/transcriptions",
-    "capabilities": ["stt", "transcribe"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${OPENAI_API_KEY}"},
-    "headers": {"Content-Type": "multipart/form-data"},
+    "capabilities": [
+      "stt",
+      "transcribe"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OPENAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "multipart/form-data"
+    },
     "models_param": "model",
-    "limits": {"rate": "varies by plan"},
+    "limits": {
+      "rate": "varies by plan"
+    },
     "docs": "https://platform.openai.com/docs/api-reference/audio/createTranscription",
     "status": "stable",
     "reputation": {},
@@ -605,11 +1072,22 @@
     "id": "agi://service/google/vision-ai:v1",
     "name": "Google Vision AI",
     "endpoint": "https://vision.googleapis.com/v1/images:annotate",
-    "capabilities": ["vision", "ocr", "labels"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GCP_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "vision",
+      "ocr",
+      "labels"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GCP_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by project quota"},
+    "limits": {
+      "rate": "by project quota"
+    },
     "docs": "https://cloud.google.com/vision/docs/reference/rest/v1/images/annotate",
     "status": "stable",
     "reputation": {},
@@ -619,11 +1097,21 @@
     "id": "agi://service/google/speech-to-text:v1",
     "name": "Google Speech-to-Text",
     "endpoint": "https://speech.googleapis.com/v1/speech:recognize",
-    "capabilities": ["stt", "transcribe"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GCP_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "stt",
+      "transcribe"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GCP_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by project quota"},
+    "limits": {
+      "rate": "by project quota"
+    },
     "docs": "https://cloud.google.com/speech-to-text/docs/reference/rest/v1/speech/recognize",
     "status": "stable",
     "reputation": {},
@@ -633,11 +1121,21 @@
     "id": "agi://service/google/text-to-speech:v1",
     "name": "Google Cloud Text-to-Speech",
     "endpoint": "https://texttospeech.googleapis.com/v1/text:synthesize",
-    "capabilities": ["tts", "audio"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GCP_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "tts",
+      "audio"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GCP_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by project quota"},
+    "limits": {
+      "rate": "by project quota"
+    },
     "docs": "https://cloud.google.com/text-to-speech/docs/reference/rest/v1/text/synthesize",
     "status": "stable",
     "reputation": {},
@@ -647,11 +1145,22 @@
     "id": "agi://service/azure/speech:v1",
     "name": "Azure Cognitive Services (Speech)",
     "endpoint": "https://{region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1",
-    "capabilities": ["stt", "tts", "speech"],
-    "auth": {"method": "key", "header": "Ocp-Apim-Subscription-Key: ${AZURE_SPEECH_KEY}"},
-    "headers": {"Content-Type": "audio/wav"},
+    "capabilities": [
+      "stt",
+      "tts",
+      "speech"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "Ocp-Apim-Subscription-Key: ${AZURE_SPEECH_KEY}"
+    },
+    "headers": {
+      "Content-Type": "audio/wav"
+    },
     "models_param": null,
-    "limits": {"rate": "by Azure tier"},
+    "limits": {
+      "rate": "by Azure tier"
+    },
     "docs": "https://learn.microsoft.com/azure/ai-services/speech-service/rest-speech-to-text",
     "status": "stable",
     "reputation": {},
@@ -661,11 +1170,21 @@
     "id": "agi://service/aws/polly:v1",
     "name": "AWS Polly (Text-to-Speech)",
     "endpoint": "https://polly.{region}.amazonaws.com",
-    "capabilities": ["tts", "audio"],
-    "auth": {"method": "aws_sigv4"},
-    "headers": {"Content-Type": "application/x-amz-json-1.1", "X-Amz-Target": "Polly_20161031.SynthesizeSpeech"},
+    "capabilities": [
+      "tts",
+      "audio"
+    ],
+    "auth": {
+      "method": "aws_sigv4"
+    },
+    "headers": {
+      "Content-Type": "application/x-amz-json-1.1",
+      "X-Amz-Target": "Polly_20161031.SynthesizeSpeech"
+    },
     "models_param": null,
-    "limits": {"rate": "by account quota"},
+    "limits": {
+      "rate": "by account quota"
+    },
     "docs": "https://docs.aws.amazon.com/polly/latest/dg/API_SynthesizeSpeech.html",
     "status": "stable",
     "reputation": {},
@@ -675,11 +1194,21 @@
     "id": "agi://service/aws/transcribe:v1",
     "name": "AWS Transcribe",
     "endpoint": "https://transcribe.{region}.amazonaws.com",
-    "capabilities": ["stt", "transcribe"],
-    "auth": {"method": "aws_sigv4"},
-    "headers": {"Content-Type": "application/x-amz-json-1.1", "X-Amz-Target": "Transcribe.StartTranscriptionJob"},
+    "capabilities": [
+      "stt",
+      "transcribe"
+    ],
+    "auth": {
+      "method": "aws_sigv4"
+    },
+    "headers": {
+      "Content-Type": "application/x-amz-json-1.1",
+      "X-Amz-Target": "Transcribe.StartTranscriptionJob"
+    },
     "models_param": null,
-    "limits": {"rate": "by account quota"},
+    "limits": {
+      "rate": "by account quota"
+    },
     "docs": "https://docs.aws.amazon.com/transcribe/latest/APIReference/Welcome.html",
     "status": "stable",
     "reputation": {},
@@ -689,11 +1218,21 @@
     "id": "agi://service/aws/rekognition:v1",
     "name": "AWS Rekognition",
     "endpoint": "https://rekognition.{region}.amazonaws.com",
-    "capabilities": ["vision", "image-detect"],
-    "auth": {"method": "aws_sigv4"},
-    "headers": {"Content-Type": "application/x-amz-json-1.1", "X-Amz-Target": "RekognitionService.DetectLabels"},
+    "capabilities": [
+      "vision",
+      "image-detect"
+    ],
+    "auth": {
+      "method": "aws_sigv4"
+    },
+    "headers": {
+      "Content-Type": "application/x-amz-json-1.1",
+      "X-Amz-Target": "RekognitionService.DetectLabels"
+    },
     "models_param": null,
-    "limits": {"rate": "by account quota"},
+    "limits": {
+      "rate": "by account quota"
+    },
     "docs": "https://docs.aws.amazon.com/rekognition/latest/APIReference/Welcome.html",
     "status": "stable",
     "reputation": {},
@@ -703,11 +1242,22 @@
     "id": "agi://service/assemblyai/stt:v1",
     "name": "AssemblyAI Speech-to-Text",
     "endpoint": "https://api.assemblyai.com/v2/transcribe",
-    "capabilities": ["stt", "transcribe", "diarization"],
-    "auth": {"method": "bearer", "header": "Authorization: ${ASSEMBLYAI_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "stt",
+      "transcribe",
+      "diarization"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: ${ASSEMBLYAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://www.assemblyai.com/docs/",
     "status": "stable",
     "reputation": {},
@@ -717,11 +1267,21 @@
     "id": "agi://service/deepgram/stt:v1",
     "name": "Deepgram Speech-to-Text",
     "endpoint": "https://api.deepgram.com/v1/listen",
-    "capabilities": ["stt", "realtime"],
-    "auth": {"method": "bearer", "header": "Authorization: Token ${DEEPGRAM_API_KEY}"},
-    "headers": {"Content-Type": "audio/*"},
+    "capabilities": [
+      "stt",
+      "realtime"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Token ${DEEPGRAM_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "audio/*"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://developers.deepgram.com/reference/streaming",
     "status": "stable",
     "reputation": {},
@@ -731,11 +1291,21 @@
     "id": "agi://service/elevenlabs/voice:v1",
     "name": "ElevenLabs Voice AI",
     "endpoint": "https://api.elevenlabs.io/v1/text-to-speech",
-    "capabilities": ["tts", "voice"],
-    "auth": {"method": "key", "header": "xi-api-key: ${ELEVENLABS_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "tts",
+      "voice"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "xi-api-key: ${ELEVENLABS_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.elevenlabs.io/",
     "status": "stable",
     "reputation": {},
@@ -745,11 +1315,20 @@
     "id": "agi://service/stability/stable-diffusion:v1",
     "name": "Stability AI (Stable Diffusion)",
     "endpoint": "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024x1024/text-to-image",
-    "capabilities": ["image-gen"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${STABILITY_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "image-gen"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${STABILITY_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://platform.stability.ai/docs/api-reference#tag/Text-to-Image",
     "status": "stable",
     "reputation": {},
@@ -759,11 +1338,22 @@
     "id": "agi://service/replicate/image-gen:v1",
     "name": "Replicate Image Generation",
     "endpoint": "https://api.replicate.com/v1/predictions",
-    "capabilities": ["image-gen", "video-gen", "async_jobs"],
-    "auth": {"method": "bearer", "header": "Authorization: Token ${REPLICATE_API_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "image-gen",
+      "video-gen",
+      "async_jobs"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Token ${REPLICATE_API_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "version",
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://replicate.com/docs/reference/http#predictions",
     "status": "stable",
     "reputation": {},
@@ -773,11 +1363,21 @@
     "id": "agi://service/runway/gen2:v1",
     "name": "Runway Gen-2",
     "endpoint": "https://api.runwayml.com/v1",
-    "capabilities": ["video-gen", "image-gen"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${RUNWAY_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "video-gen",
+      "image-gen"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${RUNWAY_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.runwayml.com/",
     "status": "stable",
     "reputation": {},
@@ -787,11 +1387,21 @@
     "id": "agi://service/clipdrop/stable-diffusion:v1",
     "name": "Clipdrop Stable Diffusion",
     "endpoint": "https://clipdrop-api.co/text-to-image/v1",
-    "capabilities": ["image-gen", "enhance"],
-    "auth": {"method": "key", "header": "x-api-key: ${CLIPDROP_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "image-gen",
+      "enhance"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "x-api-key: ${CLIPDROP_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://clipdrop.co/apis",
     "status": "stable",
     "reputation": {},
@@ -801,11 +1411,20 @@
     "id": "agi://service/removebg/image:v1",
     "name": "Remove.bg Image Background",
     "endpoint": "https://api.remove.bg/v1.0/removebg",
-    "capabilities": ["image-edit"],
-    "auth": {"method": "key", "header": "X-Api-Key: ${REMOVEBG_API_KEY}"},
-    "headers": {"Content-Type": "application/x-www-form-urlencoded"},
+    "capabilities": [
+      "image-edit"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "X-Api-Key: ${REMOVEBG_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://www.remove.bg/api",
     "status": "stable",
     "reputation": {},
@@ -815,11 +1434,21 @@
     "id": "agi://service/openai/dall-e:v1",
     "name": "OpenAI DALL·E Image Generation",
     "endpoint": "https://api.openai.com/v1/images/generations",
-    "capabilities": ["image-gen", "edit"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${OPENAI_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "image-gen",
+      "edit"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OPENAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "varies by plan"},
+    "limits": {
+      "rate": "varies by plan"
+    },
     "docs": "https://platform.openai.com/docs/api-reference/images/create",
     "status": "stable",
     "reputation": {},
@@ -829,11 +1458,24 @@
     "id": "agi://service/github/rest:v1",
     "name": "GitHub REST API",
     "endpoint": "https://api.github.com",
-    "capabilities": ["code", "repos", "issues", "pulls"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GITHUB_TOKEN}"},
-    "headers": {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"},
+    "capabilities": [
+      "code",
+      "repos",
+      "issues",
+      "pulls"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GITHUB_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28"
+    },
     "models_param": null,
-    "limits": {"rate": "5000 requests/hour (token)"},
+    "limits": {
+      "rate": "5000 requests/hour (token)"
+    },
     "docs": "https://docs.github.com/rest",
     "status": "stable",
     "reputation": {},
@@ -843,11 +1485,22 @@
     "id": "agi://service/github/graphql:v1",
     "name": "GitHub GraphQL API",
     "endpoint": "https://api.github.com/graphql",
-    "capabilities": ["code", "repos", "graph"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GITHUB_TOKEN}"},
-    "headers": {"Accept": "application/vnd.github+json"},
+    "capabilities": [
+      "code",
+      "repos",
+      "graph"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GITHUB_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/vnd.github+json"
+    },
     "models_param": null,
-    "limits": {"rate": "5000 requests/hour (token); cost-based"},
+    "limits": {
+      "rate": "5000 requests/hour (token); cost-based"
+    },
     "docs": "https://docs.github.com/graphql",
     "status": "stable",
     "reputation": {},
@@ -857,11 +1510,22 @@
     "id": "agi://service/gitlab/api:v1",
     "name": "GitLab API",
     "endpoint": "https://gitlab.com/api/v4",
-    "capabilities": ["code", "repos", "ci"],
-    "auth": {"method": "bearer", "header": "PRIVATE-TOKEN: ${GITLAB_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "code",
+      "repos",
+      "ci"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "PRIVATE-TOKEN: ${GITLAB_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.gitlab.com/ee/api/",
     "status": "stable",
     "reputation": {},
@@ -871,11 +1535,22 @@
     "id": "agi://service/langchain/hub:v1",
     "name": "LangChain Hub",
     "endpoint": "https://api.langchain.plus",
-    "capabilities": ["agents", "chains", "prompts"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${LANGCHAIN_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "agents",
+      "chains",
+      "prompts"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${LANGCHAIN_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by subscription"},
+    "limits": {
+      "rate": "by subscription"
+    },
     "docs": "https://docs.smith.langchain.com/hub",
     "status": "stable",
     "reputation": {},
@@ -885,11 +1560,22 @@
     "id": "agi://service/langsmith/monitor:v1",
     "name": "LangSmith",
     "endpoint": "https://api.smith.langchain.com",
-    "capabilities": ["tracing", "evals", "monitoring"],
-    "auth": {"method": "bearer", "header": "x-api-key: ${LANGSMITH_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "tracing",
+      "evals",
+      "monitoring"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "x-api-key: ${LANGSMITH_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by subscription"},
+    "limits": {
+      "rate": "by subscription"
+    },
     "docs": "https://docs.smith.langchain.com/",
     "status": "stable",
     "reputation": {},
@@ -899,11 +1585,22 @@
     "id": "agi://service/zapier/platform:v1",
     "name": "Zapier Platform",
     "endpoint": "https://nla.zapier.com/api/v1/dynamic",
-    "capabilities": ["automation", "workflows", "actions"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${ZAPIER_NLA_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "automation",
+      "workflows",
+      "actions"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${ZAPIER_NLA_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://nla.zapier.com/api/v1/dynamic/docs",
     "status": "stable",
     "reputation": {},
@@ -913,11 +1610,21 @@
     "id": "agi://service/make/platform:v1",
     "name": "Make.com (Integromat)",
     "endpoint": "https://api.make.com/v2",
-    "capabilities": ["automation", "workflows"],
-    "auth": {"method": "bearer", "header": "Authorization: Token ${MAKE_API_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "automation",
+      "workflows"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Token ${MAKE_API_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://www.make.com/en/help/api",
     "status": "stable",
     "reputation": {},
@@ -927,11 +1634,21 @@
     "id": "agi://service/n8n/automation:v1",
     "name": "n8n Automation API",
     "endpoint": "https://api.n8n.io",
-    "capabilities": ["automation", "integrations"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${N8N_API_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "automation",
+      "integrations"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${N8N_API_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan/self-host"},
+    "limits": {
+      "rate": "by plan/self-host"
+    },
     "docs": "https://docs.n8n.io/",
     "status": "stable",
     "reputation": {},
@@ -941,11 +1658,22 @@
     "id": "agi://service/wolfram/alpha:v1",
     "name": "Wolfram Alpha API",
     "endpoint": "https://api.wolframalpha.com/v2/query",
-    "capabilities": ["math", "knowledge", "compute"],
-    "auth": {"method": "key", "query": "appid=${WOLFRAM_APPID}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "math",
+      "knowledge",
+      "compute"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "appid=${WOLFRAM_APPID}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://products.wolframalpha.com/api/documentation/",
     "status": "stable",
     "reputation": {},
@@ -955,11 +1683,22 @@
     "id": "agi://service/openai/code-interpreter:v1",
     "name": "OpenAI Code Interpreter (Python sandbox)",
     "endpoint": "https://api.openai.com/v1/chat/completions",
-    "capabilities": ["sandbox", "compute", "code-exec"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${OPENAI_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "sandbox",
+      "compute",
+      "code-exec"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OPENAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
-    "limits": {"rate": "varies by plan"},
+    "limits": {
+      "rate": "varies by plan"
+    },
     "docs": "https://platform.openai.com/docs/assistants/tools/code-interpreter",
     "status": "gated",
     "reputation": {},
@@ -969,11 +1708,22 @@
     "id": "agi://service/replit/api:v1",
     "name": "Replit API",
     "endpoint": "https://replit.com/data",
-    "capabilities": ["code", "exec", "hosting"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${REPLIT_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "code",
+      "exec",
+      "hosting"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${REPLIT_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.replit.com/",
     "status": "stable",
     "reputation": {},
@@ -983,11 +1733,22 @@
     "id": "agi://service/paperspace/gradient:v1",
     "name": "Paperspace Gradient",
     "endpoint": "https://api.paperspace.io",
-    "capabilities": ["gpu", "training", "notebooks"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${PAPERSPACE_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "gpu",
+      "training",
+      "notebooks"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${PAPERSPACE_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.digitalocean.com/products/paperspace/api/",
     "status": "stable",
     "reputation": {},
@@ -997,11 +1758,22 @@
     "id": "agi://service/google/bigquery:v1",
     "name": "Google BigQuery",
     "endpoint": "https://bigquery.googleapis.com/bigquery/v2",
-    "capabilities": ["data", "sql", "analytics"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GCP_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "data",
+      "sql",
+      "analytics"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GCP_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "project quotas; per TB processed"},
+    "limits": {
+      "rate": "project quotas; per TB processed"
+    },
     "docs": "https://cloud.google.com/bigquery/docs/reference/rest",
     "status": "stable",
     "reputation": {},
@@ -1011,11 +1783,21 @@
     "id": "agi://service/snowflake/sql:v1",
     "name": "Snowflake SQL API",
     "endpoint": "https://{account}.snowflakecomputing.com/api/v2/statements",
-    "capabilities": ["data", "sql"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${SNOWFLAKE_OAUTH_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "data",
+      "sql"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${SNOWFLAKE_OAUTH_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by warehouse credits"},
+    "limits": {
+      "rate": "by warehouse credits"
+    },
     "docs": "https://docs.snowflake.com/en/developer-guide/sql-api/index",
     "status": "stable",
     "reputation": {},
@@ -1025,11 +1807,22 @@
     "id": "agi://service/databricks/sql:v1",
     "name": "Databricks SQL API",
     "endpoint": "https://{workspace}.databricks.com/api/2.0/sql",
-    "capabilities": ["data", "sql", "lakehouse"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${DATABRICKS_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "data",
+      "sql",
+      "lakehouse"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${DATABRICKS_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by workspace plan"},
+    "limits": {
+      "rate": "by workspace plan"
+    },
     "docs": "https://docs.databricks.com/api/workspace/sql",
     "status": "stable",
     "reputation": {},
@@ -1039,11 +1832,21 @@
     "id": "agi://service/kaggle/api:v1",
     "name": "Kaggle API",
     "endpoint": "https://www.kaggle.com/api/v1",
-    "capabilities": ["datasets", "competitions"],
-    "auth": {"method": "key", "header": "Authorization: Kaggle ${KAGGLE_USERNAME}:${KAGGLE_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "datasets",
+      "competitions"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "Authorization: Kaggle ${KAGGLE_USERNAME}:${KAGGLE_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by service limits"},
+    "limits": {
+      "rate": "by service limits"
+    },
     "docs": "https://www.kaggle.com/docs/api",
     "status": "stable",
     "reputation": {},
@@ -1053,11 +1856,23 @@
     "id": "agi://service/huggingface/inference:v1",
     "name": "Hugging Face Inference API",
     "endpoint": "https://api-inference.huggingface.co/models",
-    "capabilities": ["nlp", "vision", "audio", "agents"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${HF_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "nlp",
+      "vision",
+      "audio",
+      "agents"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${HF_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://huggingface.co/docs/api-inference/index",
     "status": "stable",
     "reputation": {},
@@ -1067,11 +1882,21 @@
     "id": "agi://service/google/search:v1",
     "name": "Google Custom Search API",
     "endpoint": "https://www.googleapis.com/customsearch/v1",
-    "capabilities": ["search", "web"],
-    "auth": {"method": "key", "query": "key=${GOOGLE_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "search",
+      "web"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "key=${GOOGLE_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by project quota"},
+    "limits": {
+      "rate": "by project quota"
+    },
     "docs": "https://developers.google.com/custom-search/v1/overview",
     "status": "stable",
     "reputation": {},
@@ -1081,11 +1906,21 @@
     "id": "agi://service/serper/search:v1",
     "name": "Serper.dev (Google SERP)",
     "endpoint": "https://google.serper.dev/search",
-    "capabilities": ["search", "web"],
-    "auth": {"method": "bearer", "header": "X-API-KEY: ${SERPER_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "search",
+      "web"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "X-API-KEY: ${SERPER_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://serper.dev/",
     "status": "stable",
     "reputation": {},
@@ -1095,10 +1930,21 @@
     "id": "agi://service/replit/api:v1",
     "name": "Replit API",
     "endpoint": "https://replit.com/data",
-    "capabilities": ["code", "exec", "hosting"],
-    "auth": {"method": "bearer", "headers": {"Authorization": "Bearer <token>"}},
+    "capabilities": [
+      "code",
+      "exec",
+      "hosting"
+    ],
+    "auth": {
+      "method": "bearer",
+      "headers": {
+        "Authorization": "Bearer <token>"
+      }
+    },
     "models_param": null,
-    "limits": {"rate": "plan dependent"},
+    "limits": {
+      "rate": "plan dependent"
+    },
     "docs": "https://docs.replit.com/",
     "status": "active",
     "reputation": {},
@@ -1108,10 +1954,21 @@
     "id": "agi://service/paperspace/gradient:v1",
     "name": "Paperspace Gradient",
     "endpoint": "https://api.paperspace.io",
-    "capabilities": ["gpu", "training", "notebooks"],
-    "auth": {"method": "bearer", "headers": {"Authorization": "Bearer <API_KEY>"}},
+    "capabilities": [
+      "gpu",
+      "training",
+      "notebooks"
+    ],
+    "auth": {
+      "method": "bearer",
+      "headers": {
+        "Authorization": "Bearer <API_KEY>"
+      }
+    },
     "models_param": null,
-    "limits": {"rate": "GPU/time quota"},
+    "limits": {
+      "rate": "GPU/time quota"
+    },
     "docs": "https://docs.paperspace.com/gradient/",
     "status": "active",
     "reputation": {},
@@ -1121,10 +1978,21 @@
     "id": "agi://service/google/bigquery:v1",
     "name": "Google BigQuery",
     "endpoint": "https://bigquery.googleapis.com/bigquery/v2",
-    "capabilities": ["data", "sql", "analytics"],
-    "auth": {"method": "bearer", "headers": {"Authorization": "Bearer <OAuth2>"}},
+    "capabilities": [
+      "data",
+      "sql",
+      "analytics"
+    ],
+    "auth": {
+      "method": "bearer",
+      "headers": {
+        "Authorization": "Bearer <OAuth2>"
+      }
+    },
     "models_param": null,
-    "limits": {"rate": "per TB processed"},
+    "limits": {
+      "rate": "per TB processed"
+    },
     "docs": "https://cloud.google.com/bigquery/docs/reference/rest",
     "status": "active",
     "reputation": {},
@@ -1134,10 +2002,20 @@
     "id": "agi://service/snowflake/sql:v1",
     "name": "Snowflake SQL API",
     "endpoint": "https://{account}.snowflakecomputing.com/api/v2/statements",
-    "capabilities": ["data", "sql"],
-    "auth": {"method": "bearer", "headers": {"Authorization": "Bearer <token>"}},
+    "capabilities": [
+      "data",
+      "sql"
+    ],
+    "auth": {
+      "method": "bearer",
+      "headers": {
+        "Authorization": "Bearer <token>"
+      }
+    },
     "models_param": null,
-    "limits": {"rate": "usage-based credits"},
+    "limits": {
+      "rate": "usage-based credits"
+    },
     "docs": "https://docs.snowflake.com/en/developer-guide/sql-api/intro",
     "status": "active",
     "reputation": {},
@@ -1147,11 +2025,22 @@
     "id": "agi://service/asana/api:v1",
     "name": "Asana API",
     "endpoint": "https://app.asana.com/api/1.0",
-    "capabilities": ["tasks", "projects", "teams"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${ASANA_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "tasks",
+      "projects",
+      "teams"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${ASANA_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per user token limits"},
+    "limits": {
+      "rate": "per user token limits"
+    },
     "docs": "https://developers.asana.com/docs",
     "status": "stable",
     "reputation": {},
@@ -1161,11 +2050,21 @@
     "id": "agi://service/monday/api:v1",
     "name": "Monday.com API",
     "endpoint": "https://api.monday.com/v2",
-    "capabilities": ["tasks", "projects"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${MONDAY_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "tasks",
+      "projects"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${MONDAY_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per account plan"},
+    "limits": {
+      "rate": "per account plan"
+    },
     "docs": "https://developer.monday.com/api-reference/introduction/",
     "status": "stable",
     "reputation": {},
@@ -1175,11 +2074,22 @@
     "id": "agi://service/dropbox/api:v1",
     "name": "Dropbox API",
     "endpoint": "https://api.dropboxapi.com/2",
-    "capabilities": ["storage", "files", "sharing"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${DROPBOX_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "storage",
+      "files",
+      "sharing"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${DROPBOX_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by app limits"},
+    "limits": {
+      "rate": "by app limits"
+    },
     "docs": "https://www.dropbox.com/developers/documentation/http/documentation",
     "status": "stable",
     "reputation": {},
@@ -1189,11 +2099,22 @@
     "id": "agi://service/box/api:v1",
     "name": "Box API",
     "endpoint": "https://api.box.com/2.0",
-    "capabilities": ["storage", "files", "sharing"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${BOX_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "storage",
+      "files",
+      "sharing"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${BOX_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "enterprise throttles"},
+    "limits": {
+      "rate": "enterprise throttles"
+    },
     "docs": "https://developer.box.com/reference/",
     "status": "stable",
     "reputation": {},
@@ -1203,10 +2124,20 @@
     "id": "agi://service/bing/search:v1",
     "name": "Bing Web Search API",
     "endpoint": "https://api.bing.microsoft.com/v7.0/search",
-    "capabilities": ["search", "web"],
-    "auth": {"method": "key", "headers": {"Ocp-Apim-Subscription-Key": "<API_KEY>"}},
+    "capabilities": [
+      "search",
+      "web"
+    ],
+    "auth": {
+      "method": "key",
+      "headers": {
+        "Ocp-Apim-Subscription-Key": "<API_KEY>"
+      }
+    },
     "models_param": null,
-    "limits": {"rate": "subscription based"},
+    "limits": {
+      "rate": "subscription based"
+    },
     "docs": "https://learn.microsoft.com/en-us/bing/search-apis/",
     "status": "active",
     "reputation": {},
@@ -1216,10 +2147,20 @@
     "id": "agi://service/brave/search:v1",
     "name": "Brave Search API",
     "endpoint": "https://api.search.brave.com/res/v1/web/search",
-    "capabilities": ["search", "privacy"],
-    "auth": {"method": "bearer", "headers": {"Authorization": "Bearer <API_KEY>"}},
+    "capabilities": [
+      "search",
+      "privacy"
+    ],
+    "auth": {
+      "method": "bearer",
+      "headers": {
+        "Authorization": "Bearer <API_KEY>"
+      }
+    },
     "models_param": null,
-    "limits": {"rate": "per query pricing"},
+    "limits": {
+      "rate": "per query pricing"
+    },
     "docs": "https://api.search.brave.com/app/documentation/web-search",
     "status": "active",
     "reputation": {},
@@ -1229,10 +2170,21 @@
     "id": "agi://service/perplexity/api:v1",
     "name": "Perplexity AI API",
     "endpoint": "https://api.perplexity.ai",
-    "capabilities": ["search", "qa", "chat"],
-    "auth": {"method": "bearer", "headers": {"Authorization": "Bearer <token>"}},
+    "capabilities": [
+      "search",
+      "qa",
+      "chat"
+    ],
+    "auth": {
+      "method": "bearer",
+      "headers": {
+        "Authorization": "Bearer <token>"
+      }
+    },
     "models_param": null,
-    "limits": {"rate": "subscription pricing"},
+    "limits": {
+      "rate": "subscription pricing"
+    },
     "docs": "https://docs.perplexity.ai/",
     "status": "active",
     "reputation": {},
@@ -1242,11 +2194,23 @@
     "id": "agi://service/notion/api:v1",
     "name": "Notion API",
     "endpoint": "https://api.notion.com/v1",
-    "capabilities": ["notes", "databases", "tasks"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${NOTION_TOKEN}"},
-    "headers": {"Notion-Version": "2022-06-28", "Content-Type": "application/json"},
+    "capabilities": [
+      "notes",
+      "databases",
+      "tasks"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${NOTION_TOKEN}"
+    },
+    "headers": {
+      "Notion-Version": "2022-06-28",
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "standard Notion rate limits; see docs"},
+    "limits": {
+      "rate": "standard Notion rate limits; see docs"
+    },
     "docs": "https://developers.notion.com/reference/intro",
     "status": "stable",
     "reputation": {},
@@ -1256,11 +2220,22 @@
     "id": "agi://service/slack/api:v1",
     "name": "Slack API",
     "endpoint": "https://slack.com/api",
-    "capabilities": ["chat", "workspace", "automation"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${SLACK_BOT_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "chat",
+      "workspace",
+      "automation"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${SLACK_BOT_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per-method throttles"},
+    "limits": {
+      "rate": "per-method throttles"
+    },
     "docs": "https://api.slack.com/web",
     "status": "stable",
     "reputation": {},
@@ -1270,11 +2245,23 @@
     "id": "agi://service/microsoft/graph:v1",
     "name": "Microsoft Graph API",
     "endpoint": "https://graph.microsoft.com/v1.0",
-    "capabilities": ["office", "mail", "calendar", "tasks"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${MS_GRAPH_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "office",
+      "mail",
+      "calendar",
+      "tasks"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${MS_GRAPH_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "service-specific throttling"},
+    "limits": {
+      "rate": "service-specific throttling"
+    },
     "docs": "https://learn.microsoft.com/graph/overview",
     "status": "stable",
     "reputation": {},
@@ -1284,11 +2271,22 @@
     "id": "agi://service/google/workspace:v1",
     "name": "Google Workspace APIs",
     "endpoint": "https://www.googleapis.com",
-    "capabilities": ["gmail", "calendar", "drive"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GCP_OAUTH_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "gmail",
+      "calendar",
+      "drive"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GCP_OAUTH_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per-product quotas"},
+    "limits": {
+      "rate": "per-product quotas"
+    },
     "docs": "https://developers.google.com/workspace",
     "status": "stable",
     "reputation": {},
@@ -1298,11 +2296,21 @@
     "id": "agi://service/evernote/api:v1",
     "name": "Evernote API",
     "endpoint": "https://api.evernote.com/v1",
-    "capabilities": ["notes", "storage"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${EVERNOTE_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "notes",
+      "storage"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${EVERNOTE_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://dev.evernote.com/doc/",
     "status": "stable",
     "reputation": {},
@@ -1312,11 +2320,22 @@
     "id": "agi://service/airtable/api:v1",
     "name": "Airtable API",
     "endpoint": "https://api.airtable.com/v0",
-    "capabilities": ["databases", "tasks", "storage"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${AIRTABLE_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "databases",
+      "tasks",
+      "storage"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${AIRTABLE_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per-base rate limits"},
+    "limits": {
+      "rate": "per-base rate limits"
+    },
     "docs": "https://airtable.com/developers/web/api/introduction",
     "status": "stable",
     "reputation": {},
@@ -1326,11 +2345,22 @@
     "id": "agi://service/confluence/api:v1",
     "name": "Atlassian Confluence API",
     "endpoint": "https://{subdomain}.atlassian.net/wiki/rest/api",
-    "capabilities": ["docs", "wiki", "tasks"],
-    "auth": {"method": "basic", "header": "Authorization: Basic base64(${EMAIL}:${API_TOKEN})"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "docs",
+      "wiki",
+      "tasks"
+    ],
+    "auth": {
+      "method": "basic",
+      "header": "Authorization: Basic base64(${EMAIL}:${API_TOKEN})"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by cloud plan"},
+    "limits": {
+      "rate": "by cloud plan"
+    },
     "docs": "https://developer.atlassian.com/cloud/confluence/rest/",
     "status": "stable",
     "reputation": {},
@@ -1340,11 +2370,22 @@
     "id": "agi://service/jira/api:v1",
     "name": "Atlassian Jira API",
     "endpoint": "https://{subdomain}.atlassian.net/rest/api/3",
-    "capabilities": ["tasks", "issues", "project-management"],
-    "auth": {"method": "basic", "header": "Authorization: Basic base64(${EMAIL}:${API_TOKEN})"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "tasks",
+      "issues",
+      "project-management"
+    ],
+    "auth": {
+      "method": "basic",
+      "header": "Authorization: Basic base64(${EMAIL}:${API_TOKEN})"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by cloud plan"},
+    "limits": {
+      "rate": "by cloud plan"
+    },
     "docs": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
     "status": "stable",
     "reputation": {},
@@ -1354,11 +2395,22 @@
     "id": "agi://service/trello/api:v1",
     "name": "Trello API",
     "endpoint": "https://api.trello.com/1",
-    "capabilities": ["tasks", "boards", "cards"],
-    "auth": {"method": "key+token", "query": "key=${TRELLO_KEY}&token=${TRELLO_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "tasks",
+      "boards",
+      "cards"
+    ],
+    "auth": {
+      "method": "key+token",
+      "query": "key=${TRELLO_KEY}&token=${TRELLO_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per key limits"},
+    "limits": {
+      "rate": "per key limits"
+    },
     "docs": "https://developer.atlassian.com/cloud/trello/rest/",
     "status": "stable",
     "reputation": {},
@@ -1368,11 +2420,20 @@
     "id": "agi://service/aws/ec2:v1",
     "name": "AWS EC2",
     "endpoint": "https://ec2.{region}.amazonaws.com",
-    "capabilities": ["compute", "infra"],
-    "auth": {"method": "aws_sigv4"},
-    "headers": {"Content-Type": "application/x-www-form-urlencoded"},
+    "capabilities": [
+      "compute",
+      "infra"
+    ],
+    "auth": {
+      "method": "aws_sigv4"
+    },
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
     "models_param": null,
-    "limits": {"rate": "by account/quota"},
+    "limits": {
+      "rate": "by account/quota"
+    },
     "docs": "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html",
     "status": "stable",
     "reputation": {},
@@ -1382,11 +2443,20 @@
     "id": "agi://service/aws/s3:v1",
     "name": "AWS S3",
     "endpoint": "https://s3.{region}.amazonaws.com",
-    "capabilities": ["storage", "files"],
-    "auth": {"method": "aws_sigv4"},
-    "headers": {"Content-Type": "application/xml"},
+    "capabilities": [
+      "storage",
+      "files"
+    ],
+    "auth": {
+      "method": "aws_sigv4"
+    },
+    "headers": {
+      "Content-Type": "application/xml"
+    },
     "models_param": null,
-    "limits": {"rate": "by account; request-based pricing"},
+    "limits": {
+      "rate": "by account; request-based pricing"
+    },
     "docs": "https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html",
     "status": "stable",
     "reputation": {},
@@ -1396,11 +2466,20 @@
     "id": "agi://service/aws/lambda:v1",
     "name": "AWS Lambda",
     "endpoint": "https://lambda.{region}.amazonaws.com",
-    "capabilities": ["serverless", "compute"],
-    "auth": {"method": "aws_sigv4"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "serverless",
+      "compute"
+    ],
+    "auth": {
+      "method": "aws_sigv4"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by account; concurrency limits"},
+    "limits": {
+      "rate": "by account; concurrency limits"
+    },
     "docs": "https://docs.aws.amazon.com/lambda/latest/dg/API_Reference.html",
     "status": "stable",
     "reputation": {},
@@ -1410,11 +2489,21 @@
     "id": "agi://service/gcp/compute:v1",
     "name": "Google Compute Engine",
     "endpoint": "https://compute.googleapis.com/compute/v1",
-    "capabilities": ["compute", "infra"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GCP_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "compute",
+      "infra"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GCP_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per-project quotas"},
+    "limits": {
+      "rate": "per-project quotas"
+    },
     "docs": "https://cloud.google.com/compute/docs/reference/rest/v1",
     "status": "stable",
     "reputation": {},
@@ -1424,11 +2513,21 @@
     "id": "agi://service/gcp/storage:v1",
     "name": "Google Cloud Storage",
     "endpoint": "https://storage.googleapis.com/storage/v1",
-    "capabilities": ["storage", "files"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GCP_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "storage",
+      "files"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GCP_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per-project quotas"},
+    "limits": {
+      "rate": "per-project quotas"
+    },
     "docs": "https://cloud.google.com/storage/docs/json_api/v1",
     "status": "stable",
     "reputation": {},
@@ -1438,11 +2537,21 @@
     "id": "agi://service/gcp/functions:v1",
     "name": "Google Cloud Functions",
     "endpoint": "https://cloudfunctions.googleapis.com/v1",
-    "capabilities": ["serverless", "compute"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GCP_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "serverless",
+      "compute"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GCP_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per-project quotas"},
+    "limits": {
+      "rate": "per-project quotas"
+    },
     "docs": "https://cloud.google.com/functions/docs/reference/rest",
     "status": "stable",
     "reputation": {},
@@ -1452,11 +2561,21 @@
     "id": "agi://service/azure/vm:v1",
     "name": "Azure Virtual Machines",
     "endpoint": "https://management.azure.com/subscriptions/{sub}/providers/Microsoft.Compute/virtualMachines",
-    "capabilities": ["compute", "infra"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${AZURE_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "compute",
+      "infra"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${AZURE_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by subscription; RP throttles"},
+    "limits": {
+      "rate": "by subscription; RP throttles"
+    },
     "docs": "https://learn.microsoft.com/rest/api/compute/virtual-machines",
     "status": "stable",
     "reputation": {},
@@ -1466,11 +2585,24 @@
     "id": "agi://service/azure/storage:v1",
     "name": "Azure Blob Storage",
     "endpoint": "https://{account}.blob.core.windows.net",
-    "capabilities": ["storage", "files"],
-    "auth": {"method": "bearer", "alt_methods": ["shared_key", "sas"]},
-    "headers": {"x-ms-version": "2023-11-03"},
+    "capabilities": [
+      "storage",
+      "files"
+    ],
+    "auth": {
+      "method": "bearer",
+      "alt_methods": [
+        "shared_key",
+        "sas"
+      ]
+    },
+    "headers": {
+      "x-ms-version": "2023-11-03"
+    },
     "models_param": null,
-    "limits": {"rate": "by account"},
+    "limits": {
+      "rate": "by account"
+    },
     "docs": "https://learn.microsoft.com/rest/api/storageservices/blob-service-rest-api",
     "status": "stable",
     "reputation": {},
@@ -1480,11 +2612,21 @@
     "id": "agi://service/azure/functions:v1",
     "name": "Azure Functions",
     "endpoint": "https://management.azure.com/subscriptions/{sub}/providers/Microsoft.Web/sites",
-    "capabilities": ["serverless", "compute"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${AZURE_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "serverless",
+      "compute"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${AZURE_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by subscription"},
+    "limits": {
+      "rate": "by subscription"
+    },
     "docs": "https://learn.microsoft.com/rest/api/appservice/web-apps",
     "status": "stable",
     "reputation": {},
@@ -1494,11 +2636,21 @@
     "id": "agi://service/cloudflare/workers:v1",
     "name": "Cloudflare Workers",
     "endpoint": "https://api.cloudflare.com/client/v4/accounts/{id}/workers/scripts",
-    "capabilities": ["edge", "serverless"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${CF_API_TOKEN}"},
-    "headers": {"Content-Type": "application/javascript"},
+    "capabilities": [
+      "edge",
+      "serverless"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${CF_API_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/javascript"
+    },
     "models_param": null,
-    "limits": {"rate": "per account plan"},
+    "limits": {
+      "rate": "per account plan"
+    },
     "docs": "https://developers.cloudflare.com/workers/api/",
     "status": "stable",
     "reputation": {},
@@ -1508,11 +2660,21 @@
     "id": "agi://service/cloudflare/r2:v1",
     "name": "Cloudflare R2 Storage",
     "endpoint": "https://api.cloudflare.com/client/v4/accounts/{id}/r2",
-    "capabilities": ["storage", "files"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${CF_API_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "storage",
+      "files"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${CF_API_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per account plan"},
+    "limits": {
+      "rate": "per account plan"
+    },
     "docs": "https://developers.cloudflare.com/r2/api/",
     "status": "stable",
     "reputation": {},
@@ -1522,11 +2684,21 @@
     "id": "agi://service/vercel/deploy:v1",
     "name": "Vercel Deploy API",
     "endpoint": "https://api.vercel.com/v13/deployments",
-    "capabilities": ["deploy", "edge"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${VERCEL_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "deploy",
+      "edge"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${VERCEL_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://vercel.com/docs/rest-api",
     "status": "stable",
     "reputation": {},
@@ -1536,11 +2708,21 @@
     "id": "agi://service/netlify/deploy:v1",
     "name": "Netlify Deploy API",
     "endpoint": "https://api.netlify.com/api/v1/sites",
-    "capabilities": ["deploy", "hosting"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${NETLIFY_TOKEN}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "deploy",
+      "hosting"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${NETLIFY_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by plan"},
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://docs.netlify.com/api/get-started/",
     "status": "stable",
     "reputation": {},
@@ -1550,11 +2732,21 @@
     "id": "agi://service/stripe/api:v1",
     "name": "Stripe API",
     "endpoint": "https://api.stripe.com/v1",
-    "capabilities": ["payments", "billing"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${STRIPE_SECRET_KEY}"},
-    "headers": {"Idempotency-Key": "${optional_uuid}"},
+    "capabilities": [
+      "payments",
+      "billing"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${STRIPE_SECRET_KEY}"
+    },
+    "headers": {
+      "Idempotency-Key": "${optional_uuid}"
+    },
     "models_param": null,
-    "limits": {"rate": "per key; burstable"},
+    "limits": {
+      "rate": "per key; burstable"
+    },
     "docs": "https://stripe.com/docs/api",
     "status": "stable",
     "reputation": {},
@@ -1564,11 +2756,21 @@
     "id": "agi://service/paypal/api:v1",
     "name": "PayPal REST API",
     "endpoint": "https://api-m.paypal.com",
-    "capabilities": ["payments", "checkout"],
-    "auth": {"method": "bearer", "notes": "Obtain via POST /v1/oauth2/token with Basic <client:secret>"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "payments",
+      "checkout"
+    ],
+    "auth": {
+      "method": "bearer",
+      "notes": "Obtain via POST /v1/oauth2/token with Basic <client:secret>"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per account"},
+    "limits": {
+      "rate": "per account"
+    },
     "docs": "https://developer.paypal.com/api/rest/",
     "status": "stable",
     "reputation": {},
@@ -1578,11 +2780,22 @@
     "id": "agi://service/twilio/api:v1",
     "name": "Twilio API",
     "endpoint": "https://api.twilio.com/2010-04-01",
-    "capabilities": ["sms", "voice", "video"],
-    "auth": {"method": "basic", "header": "Authorization: Basic base64(${ACCOUNT_SID}:${AUTH_TOKEN})"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "sms",
+      "voice",
+      "video"
+    ],
+    "auth": {
+      "method": "basic",
+      "header": "Authorization: Basic base64(${ACCOUNT_SID}:${AUTH_TOKEN})"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per subaccount"},
+    "limits": {
+      "rate": "per subaccount"
+    },
     "docs": "https://www.twilio.com/docs/usage/api",
     "status": "stable",
     "reputation": {},
@@ -1592,11 +2805,21 @@
     "id": "agi://service/sendgrid/api:v1",
     "name": "SendGrid API",
     "endpoint": "https://api.sendgrid.com/v3/mail/send",
-    "capabilities": ["email", "notify"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${SENDGRID_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "email",
+      "notify"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${SENDGRID_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per plan; daily send limits"},
+    "limits": {
+      "rate": "per plan; daily send limits"
+    },
     "docs": "https://docs.sendgrid.com/api-reference/mail-send/mail-send",
     "status": "stable",
     "reputation": {},
@@ -1606,11 +2829,25 @@
     "id": "agi://service/datadog/api:v1",
     "name": "Datadog API",
     "endpoint": "https://api.datadoghq.com/api/v1",
-    "capabilities": ["monitoring", "metrics", "logs"],
-    "auth": {"method": "key_pair", "headers": {"DD-API-KEY": "${DD_API_KEY}", "DD-APPLICATION-KEY": "${DD_APP_KEY}"}},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "monitoring",
+      "metrics",
+      "logs"
+    ],
+    "auth": {
+      "method": "key_pair",
+      "headers": {
+        "DD-API-KEY": "${DD_API_KEY}",
+        "DD-APPLICATION-KEY": "${DD_APP_KEY}"
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per org; endpoint-specific"},
+    "limits": {
+      "rate": "per org; endpoint-specific"
+    },
     "docs": "https://docs.datadoghq.com/api/latest/",
     "status": "stable",
     "reputation": {},
@@ -1620,11 +2857,21 @@
     "id": "agi://service/grafana/api:v1",
     "name": "Grafana API",
     "endpoint": "https://grafana.com/api",
-    "capabilities": ["dashboards", "metrics"],
-    "auth": {"method": "bearer", "header": "Authorization: Bearer ${GRAFANA_TOKEN}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "dashboards",
+      "metrics"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GRAFANA_TOKEN}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "by cloud plan"},
+    "limits": {
+      "rate": "by cloud plan"
+    },
     "docs": "https://grafana.com/docs/grafana/latest/developers/http_api/",
     "status": "stable",
     "reputation": {},
@@ -1634,11 +2881,20 @@
     "id": "agi://service/prometheus/api:v1",
     "name": "Prometheus API",
     "endpoint": "http://{host}:9090/api/v1",
-    "capabilities": ["monitoring", "metrics"],
-    "auth": {"method": "none"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "monitoring",
+      "metrics"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "self-hosted"},
+    "limits": {
+      "rate": "self-hosted"
+    },
     "docs": "https://prometheus.io/docs/prometheus/latest/querying/api/",
     "status": "stable",
     "reputation": {},
@@ -1648,11 +2904,22 @@
     "id": "agi://service/google/translate:v1",
     "name": "Google Cloud Translation API",
     "endpoint": "https://translation.googleapis.com/language/translate/v2",
-    "capabilities": ["translate", "multilingual"],
-    "auth": {"method": "key_or_bearer", "header": "Authorization: Bearer ${GCP_TOKEN}", "query": "key=${GOOGLE_API_KEY}"},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "translate",
+      "multilingual"
+    ],
+    "auth": {
+      "method": "key_or_bearer",
+      "header": "Authorization: Bearer ${GCP_TOKEN}",
+      "query": "key=${GOOGLE_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per project quota; per-character billing"},
+    "limits": {
+      "rate": "per project quota; per-character billing"
+    },
     "docs": "https://cloud.google.com/translate/docs/reference/rest",
     "status": "stable",
     "reputation": {},
@@ -1662,11 +2929,24 @@
     "id": "agi://service/microsoft/translator:v1",
     "name": "Microsoft Translator Text API",
     "endpoint": "https://api.cognitive.microsofttranslator.com/translate",
-    "capabilities": ["translate", "multilingual"],
-    "auth": {"method": "key", "headers": {"Ocp-Apim-Subscription-Key": "${AZURE_TRANSLATOR_KEY}", "Ocp-Apim-Subscription-Region": "${AZURE_REGION}"}},
-    "headers": {"Content-Type": "application/json"},
+    "capabilities": [
+      "translate",
+      "multilingual"
+    ],
+    "auth": {
+      "method": "key",
+      "headers": {
+        "Ocp-Apim-Subscription-Key": "${AZURE_TRANSLATOR_KEY}",
+        "Ocp-Apim-Subscription-Region": "${AZURE_REGION}"
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "per resource tier; per-character billing"},
+    "limits": {
+      "rate": "per resource tier; per-character billing"
+    },
     "docs": "https://learn.microsoft.com/azure/ai-services/translator/reference/v3-0-translate",
     "status": "stable",
     "reputation": {},
@@ -1676,11 +2956,21 @@
     "id": "agi://service/deepl/translate:v1",
     "name": "DeepL API",
     "endpoint": "https://api.deepl.com/v2/translate",
-    "capabilities": ["translate", "multilingual"],
-    "auth": {"method": "key", "query": "auth_key=${DEEPL_API_KEY}"},
-    "headers": {"Content-Type": "application/x-www-form-urlencoded"},
+    "capabilities": [
+      "translate",
+      "multilingual"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "auth_key=${DEEPL_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
     "models_param": null,
-    "limits": {"rate": "per account; per-character billing"},
+    "limits": {
+      "rate": "per account; per-character billing"
+    },
     "docs": "https://www.deepl.com/docs-api",
     "status": "stable",
     "reputation": {},
@@ -1690,11 +2980,21 @@
     "id": "agi://service/openweather/api:v1",
     "name": "OpenWeatherMap API",
     "endpoint": "https://api.openweathermap.org/data/2.5",
-    "capabilities": ["weather", "forecast"],
-    "auth": {"method": "key", "query": "appid=${OPENWEATHER_API_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "weather",
+      "forecast"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "appid=${OPENWEATHER_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "tiered; free limited"},
+    "limits": {
+      "rate": "tiered; free limited"
+    },
     "docs": "https://openweathermap.org/api",
     "status": "stable",
     "reputation": {},
@@ -1704,11 +3004,21 @@
     "id": "agi://service/weatherapi/api:v1",
     "name": "WeatherAPI",
     "endpoint": "https://api.weatherapi.com/v1",
-    "capabilities": ["weather", "forecast"],
-    "auth": {"method": "key", "query": "key=${WEATHERAPI_KEY}"},
-    "headers": {"Accept": "application/json"},
+    "capabilities": [
+      "weather",
+      "forecast"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "key=${WEATHERAPI_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": {"rate": "free+paid tiers"},
+    "limits": {
+      "rate": "free+paid tiers"
+    },
     "docs": "https://www.weatherapi.com/docs/",
     "status": "stable",
     "reputation": {},
@@ -1718,15 +3028,22 @@
     "id": "agi://service/groq/chat-completions:v1",
     "name": "Groq Chat Completions (OpenAI-compatible)",
     "endpoint": "https://api.groq.com/openai/v1/chat/completions",
-    "capabilities": ["chat", "stream", "openai_compatible"],
+    "capabilities": [
+      "chat",
+      "stream",
+      "openai_compatible"
+    ],
     "auth": {
       "method": "bearer",
-      "header": "Authorization: Bearer ${GROQ_API_KEY}"},
+      "header": "Authorization: Bearer ${GROQ_API_KEY}"
+    },
     "headers": {
-      "Content-Type": "application/json"},
+      "Content-Type": "application/json"
+    },
     "models_param": "model",
     "limits": {
-      "rate": "by plan"},
+      "rate": "by plan"
+    },
     "docs": "https://console.groq.com/docs/api-reference",
     "status": "stable",
     "reputation": {
@@ -1738,7 +3055,13 @@
     "id": "agi://service/fireworks/chat-completions:v1",
     "name": "Fireworks Chat Completions",
     "endpoint": "https://api.fireworks.ai/inference/v1/chat/completions",
-    "capabilities": ["chat", "tools", "stream", "embeddings", "rerank"],
+    "capabilities": [
+      "chat",
+      "tools",
+      "stream",
+      "embeddings",
+      "rerank"
+    ],
     "auth": {
       "method": "bearer",
       "header": "Authorization: Bearer ${FIREWORKS_API_KEY}"
@@ -1761,7 +3084,11 @@
     "id": "agi://service/cerebras/chat-completions:v1",
     "name": "Cerebras Inference (Chat Completions)",
     "endpoint": "https://api.cerebras.ai/v1/chat/completions",
-    "capabilities": ["chat", "structured_outputs", "stream"],
+    "capabilities": [
+      "chat",
+      "structured_outputs",
+      "stream"
+    ],
     "auth": {
       "method": "bearer",
       "header": "Authorization: Bearer ${CEREBRAS_API_KEY}"
@@ -1782,7 +3109,9 @@
     "id": "agi://service/openai/embeddings:v1",
     "name": "OpenAI Embeddings",
     "endpoint": "https://api.openai.com/v1/embeddings",
-    "capabilities": ["embeddings"],
+    "capabilities": [
+      "embeddings"
+    ],
     "auth": {
       "method": "bearer",
       "header": "Authorization: Bearer ${OPENAI_API_KEY}"
@@ -1803,7 +3132,10 @@
     "id": "agi://service/cohere/rerank:v2",
     "name": "Cohere Rerank",
     "endpoint": "https://api.cohere.ai/v2/rerank",
-    "capabilities": ["rerank", "semantic_search"],
+    "capabilities": [
+      "rerank",
+      "semantic_search"
+    ],
     "auth": {
       "method": "bearer",
       "header": "Authorization: Bearer ${COHERE_API_KEY}"
@@ -1824,7 +3156,9 @@
     "id": "agi://service/voyage/embeddings:v1",
     "name": "Voyage AI Embeddings",
     "endpoint": "https://api.voyageai.com/v1/embeddings",
-    "capabilities": ["embeddings"],
+    "capabilities": [
+      "embeddings"
+    ],
     "auth": {
       "method": "bearer",
       "header": "Authorization: Bearer ${VOYAGE_API_KEY}"
@@ -1845,7 +3179,10 @@
     "id": "agi://service/jina/embeddings:v1",
     "name": "Jina AI Embeddings",
     "endpoint": "https://api.jina.ai/v1/embeddings",
-    "capabilities": ["embeddings", "multilingual"],
+    "capabilities": [
+      "embeddings",
+      "multilingual"
+    ],
     "auth": {
       "method": "bearer",
       "header": "Authorization: Bearer ${JINA_API_KEY}"
@@ -1866,7 +3203,13 @@
     "id": "agi://service/cloudflare/workers-ai-run:v1",
     "name": "Cloudflare Workers AI (Run Model)",
     "endpoint": "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/{model}",
-    "capabilities": ["chat", "vision", "audio", "inference", "serverless"],
+    "capabilities": [
+      "chat",
+      "vision",
+      "audio",
+      "inference",
+      "serverless"
+    ],
     "auth": {
       "method": "bearer",
       "header": "Authorization: Bearer ${CF_API_TOKEN}"
@@ -1889,7 +3232,11 @@
     "id": "agi://service/google/places-textsearch:v1",
     "name": "Google Places API (Text Search, New)",
     "endpoint": "https://places.googleapis.com/v1/places:searchText",
-    "capabilities": ["search", "places", "local"],
+    "capabilities": [
+      "search",
+      "places",
+      "local"
+    ],
     "auth": {
       "method": "key_or_bearer",
       "header": "X-Goog-Api-Key: ${GOOGLE_API_KEY}"
@@ -1911,7 +3258,12 @@
     "id": "agi://service/linear/graphql:v1",
     "name": "Linear GraphQL API",
     "endpoint": "https://api.linear.app/graphql",
-    "capabilities": ["issues", "projects", "graph", "webhooks"],
+    "capabilities": [
+      "issues",
+      "projects",
+      "graph",
+      "webhooks"
+    ],
     "auth": {
       "method": "bearer",
       "header": "Authorization: Bearer ${LINEAR_TOKEN}"
@@ -1932,142 +3284,801 @@
     "id": "agi://service/publicapis/catalog:v1",
     "name": "Public APIs Catalog",
     "endpoint": "https://api.publicapis.org/entries",
-    "capabilities": ["discovery", "metadata", "filtering"],
-    "auth": { "method": "none" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "discovery",
+      "metadata",
+      "filtering"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "public, limited by host" },
+    "limits": {
+      "rate": "public, limited by host"
+    },
     "docs": "https://api.publicapis.org/",
     "status": "stable",
-    "reputation": { "ecosystem": "widely used directory" },
+    "reputation": {
+      "ecosystem": "widely used directory"
+    },
     "notes": "Allows filtering by category, HTTPS, auth type, etc."
   },
   {
     "id": "agi://service/ipify/identify:v1",
     "name": "IPify – Public IP Lookup",
     "endpoint": "https://api.ipify.org?format=json",
-    "capabilities": ["network", "identity"],
-    "auth": { "method": "none" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "network",
+      "identity"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "free tier limits" },
+    "limits": {
+      "rate": "free tier limits"
+    },
     "docs": "https://www.ipify.org/",
     "status": "stable",
-    "reputation": { "simplicity": "lightweight, reliable" },
+    "reputation": {
+      "simplicity": "lightweight, reliable"
+    },
     "notes": "Returns your public IPv4/IPv6 address."
   },
   {
     "id": "agi://service/cat-fact/random:v1",
     "name": "Cat Facts API",
     "endpoint": "https://cat-fact.herokuapp.com/facts/random",
-    "capabilities": ["fun", "humor", "random"],
-    "auth": { "method": "none" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "fun",
+      "humor",
+      "random"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "public" },
+    "limits": {
+      "rate": "public"
+    },
     "docs": "https://github.com/alexwohlbruck/cat-facts",
     "status": "stable",
-    "reputation": { "community": "often used in demos" },
+    "reputation": {
+      "community": "often used in demos"
+    },
     "notes": "Optional param 'amount' for number of facts."
   },
   {
     "id": "agi://service/genderize/predict:v1",
     "name": "Genderize API",
     "endpoint": "https://api.genderize.io",
-    "capabilities": ["demographic", "prediction"],
-    "auth": { "method": "none" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "demographic",
+      "prediction"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "1000 requests/day (free)" },
+    "limits": {
+      "rate": "1000 requests/day (free)"
+    },
     "docs": "https://genderize.io/",
     "status": "stable",
-    "reputation": { "utility": "name-based gender prediction" },
+    "reputation": {
+      "utility": "name-based gender prediction"
+    },
     "notes": "Query by ?name=<string>; supports multiple names."
   },
   {
     "id": "agi://service/nationalize/predict:v1",
     "name": "Nationalize API",
     "endpoint": "https://api.nationalize.io",
-    "capabilities": ["demographic", "prediction"],
-    "auth": { "method": "none" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "demographic",
+      "prediction"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "free tier limits" },
+    "limits": {
+      "rate": "free tier limits"
+    },
     "docs": "https://nationalize.io/",
     "status": "stable",
-    "reputation": { "utility": "name → country probability" },
+    "reputation": {
+      "utility": "name → country probability"
+    },
     "notes": "Query by ?name=<string>."
   },
   {
     "id": "agi://service/openweathermap/weather:v1",
     "name": "OpenWeatherMap Current Weather",
     "endpoint": "https://api.openweathermap.org/data/2.5/weather",
-    "capabilities": ["weather", "forecast"],
-    "auth": { "method": "key", "query": "appid=${OPENWEATHER_API_KEY}" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "weather",
+      "forecast"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "appid=${OPENWEATHER_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "per API plan" },
+    "limits": {
+      "rate": "per API plan"
+    },
     "docs": "https://openweathermap.org/current",
     "status": "stable",
-    "reputation": { "domain": "weather data" },
+    "reputation": {
+      "domain": "weather data"
+    },
     "notes": "Supports location by city name, lat/lon, zip code."
   },
   {
     "id": "agi://service/crossref/metadata:v1",
     "name": "Crossref Metadata API",
     "endpoint": "https://api.crossref.org/works",
-    "capabilities": ["scholarly", "metadata", "search"],
-    "auth": { "method": "none" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "scholarly",
+      "metadata",
+      "search"
+    ],
+    "auth": {
+      "method": "none"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "polite pool (~50 r/s with mailto UA)" },
+    "limits": {
+      "rate": "polite pool (~50 r/s with mailto UA)"
+    },
     "docs": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
     "status": "stable",
-    "reputation": { "domain": "academic metadata" },
+    "reputation": {
+      "domain": "academic metadata"
+    },
     "notes": "Use query parameters like ?query.title, ?filter=..."
   },
   {
     "id": "agi://service/semanticscholar/graph:v1",
     "name": "Semantic Scholar Graph API",
     "endpoint": "https://api.semanticscholar.org/graph/v1",
-    "capabilities": ["papers", "citation", "graph"],
-    "auth": { "method": "key", "header": "x-api-key: ${S2_API_KEY}" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "papers",
+      "citation",
+      "graph"
+    ],
+    "auth": {
+      "method": "key",
+      "header": "x-api-key: ${S2_API_KEY}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "by plan" },
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://api.semanticscholar.org/api-docs/graph",
     "status": "stable",
-    "reputation": { "domain": "research" },
+    "reputation": {
+      "domain": "research"
+    },
     "notes": "Endpoints like /paper/{id}, /author/{id}, /paper/search"
   },
   {
     "id": "agi://service/replicate/image-predictions:v1",
     "name": "Replicate Image Generation",
     "endpoint": "https://api.replicate.com/v1/predictions",
-    "capabilities": ["image-gen", "async_jobs", "webhooks"],
-    "auth": { "method": "bearer", "header": "Authorization: Token ${REPLICATE_API_TOKEN}" },
-    "headers": { "Content-Type": "application/json" },
+    "capabilities": [
+      "image-gen",
+      "async_jobs",
+      "webhooks"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Token ${REPLICATE_API_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
     "models_param": "version",
-    "limits": { "rate": "by plan" },
+    "limits": {
+      "rate": "by plan"
+    },
     "docs": "https://replicate.com/docs/reference/http#predictions",
     "status": "stable",
-    "reputation": { "domain": "image generation" },
+    "reputation": {
+      "domain": "image generation"
+    },
     "notes": "Create a prediction then poll or use webhooks."
   },
   {
     "id": "agi://service/wolframalpha/compute:v1",
     "name": "Wolfram Alpha API",
     "endpoint": "https://api.wolframalpha.com/v2/query",
-    "capabilities": ["computation", "knowledge", "querying"],
-    "auth": { "method": "key", "query": "appid=${WOLFRAM_APPID}" },
-    "headers": { "Accept": "application/json" },
+    "capabilities": [
+      "computation",
+      "knowledge",
+      "querying"
+    ],
+    "auth": {
+      "method": "key",
+      "query": "appid=${WOLFRAM_APPID}"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
     "models_param": null,
-    "limits": { "rate": "per plan" },
+    "limits": {
+      "rate": "per plan"
+    },
     "docs": "https://products.wolframalpha.com/api/documentation/",
     "status": "stable",
-    "reputation": { "domain": "knowledge" },
+    "reputation": {
+      "domain": "knowledge"
+    },
     "notes": "Use output=json and input=<expression> parameters."
+  },
+  {
+    "id": "agi://service/deepseek/chat:v1",
+    "name": "DeepSeek Chat API",
+    "endpoint": "https://api.deepseek.com/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "code",
+      "reasoning",
+      "stream"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${DEEPSEEK_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.14/1M tokens"
+    },
+    "docs": "https://platform.deepseek.com/api-docs",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "emerging",
+      "strength": "coding & reasoning"
+    },
+    "notes": "Strong performance on code and math tasks. Models: deepseek-chat, deepseek-coder"
+  },
+  {
+    "id": "agi://service/groq/chat:v1",
+    "name": "Groq LPU Inference",
+    "endpoint": "https://api.groq.com/openai/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "stream",
+      "ultra_fast",
+      "function_calling"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${GROQ_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "14,400 requests/day free tier"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.05/1M tokens"
+    },
+    "docs": "https://console.groq.com/docs/quickstart",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "emerging",
+      "strength": "ultra-fast inference (700+ tok/s)"
+    },
+    "notes": "Fastest inference available. Models: Llama 3, Mixtral, Gemma. OpenAI-compatible API."
+  },
+  {
+    "id": "agi://service/together/chat:v1",
+    "name": "Together AI Chat",
+    "endpoint": "https://api.together.xyz/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "code",
+      "stream",
+      "function_calling",
+      "json_mode"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${TOGETHER_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.20/1M tokens"
+    },
+    "docs": "https://docs.together.ai/reference/chat-completions",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "growing",
+      "strength": "open models at scale"
+    },
+    "notes": "100+ open-source models. OpenAI-compatible. Fast inference on Llama, Mixtral, etc."
+  },
+  {
+    "id": "agi://service/xai/grok:v1",
+    "name": "xAI Grok API",
+    "endpoint": "https://api.x.ai/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "real_time",
+      "stream",
+      "x_integration"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${XAI_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": false,
+      "starting_price": "$5.00/1M tokens"
+    },
+    "docs": "https://docs.x.ai/api",
+    "status": "beta",
+    "reputation": {
+      "ecosystem": "emerging",
+      "strength": "real-time X data access"
+    },
+    "notes": "Real-time access to X (Twitter) data. Models: grok-beta. OpenAI-compatible."
+  },
+  {
+    "id": "agi://service/runpod/serverless:v1",
+    "name": "RunPod Serverless",
+    "endpoint": "https://api.runpod.ai/v2/{endpoint_id}/run",
+    "capabilities": [
+      "inference",
+      "serverless",
+      "gpu",
+      "custom_models"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${RUNPOD_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "endpoint_id",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "pay-per-second",
+      "free_tier": false,
+      "starting_price": "$0.0004/sec GPU"
+    },
+    "docs": "https://docs.runpod.io/serverless/overview",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "infrastructure",
+      "strength": "custom GPU deployments"
+    },
+    "notes": "Deploy custom models on GPU. Pay per second. Supports any ML framework."
+  },
+  {
+    "id": "agi://service/modal/inference:v1",
+    "name": "Modal Inference",
+    "endpoint": "https://api.modal.com/v1/web/{function_name}",
+    "capabilities": [
+      "inference",
+      "serverless",
+      "gpu",
+      "custom_code"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${MODAL_TOKEN_ID}:${MODAL_TOKEN_SECRET}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "function_name",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "pay-per-second",
+      "free_tier": true,
+      "starting_price": "$30/month free credits"
+    },
+    "docs": "https://modal.com/docs/guide",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "developer platform",
+      "strength": "Python-first serverless"
+    },
+    "notes": "Deploy any Python code to GPU. Auto-scaling. Web endpoints for inference."
+  },
+  {
+    "id": "agi://service/fireworks/chat:v1",
+    "name": "Fireworks AI Chat",
+    "endpoint": "https://api.fireworks.ai/inference/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "function_calling",
+      "stream",
+      "ultra_fast"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${FIREWORKS_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.20/1M tokens"
+    },
+    "docs": "https://docs.fireworks.ai/",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "performance leader",
+      "strength": "fastest open models"
+    },
+    "notes": "Optimized inference for Llama, Mixtral, etc. Up to 4x faster than competitors."
+  },
+  {
+    "id": "agi://service/anyscale/chat:v1",
+    "name": "Anyscale Endpoints",
+    "endpoint": "https://api.endpoints.anyscale.com/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "stream",
+      "function_calling",
+      "ray_backend"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${ANYSCALE_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.15/1M tokens"
+    },
+    "docs": "https://docs.anyscale.com/endpoints/",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "ray.io based",
+      "strength": "scalable production inference"
+    },
+    "notes": "Built on Ray. Models: Llama 2/3, Mixtral, Mistral. Production-ready scaling."
+  },
+  {
+    "id": "agi://service/ai21/chat:v1",
+    "name": "AI21 Labs Jurassic",
+    "endpoint": "https://api.ai21.com/studio/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "stream",
+      "multilingual"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${AI21_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.80/1M tokens"
+    },
+    "docs": "https://docs.ai21.com/",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "established",
+      "strength": "enterprise-grade multilingual"
+    },
+    "notes": "Models: Jamba (hybrid SSM-Transformer), Jurassic-2. Strong multilingual support."
+  },
+  {
+    "id": "agi://service/writer/chat:v1",
+    "name": "Writer (Palmyra)",
+    "endpoint": "https://api.writer.com/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "enterprise",
+      "custom_models",
+      "data_privacy"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${WRITER_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "enterprise"
+    },
+    "pricing": {
+      "model": "enterprise",
+      "free_tier": false,
+      "starting_price": "Contact sales"
+    },
+    "docs": "https://dev.writer.com/",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "enterprise",
+      "strength": "data security & custom models"
+    },
+    "notes": "Palmyra models. Enterprise focus. Custom fine-tuning. SOC2 Type II certified."
+  },
+  {
+    "id": "agi://service/replicate/llm:v1",
+    "name": "Replicate LLM Inference",
+    "endpoint": "https://api.replicate.com/v1/predictions",
+    "capabilities": [
+      "text-gen",
+      "async_jobs",
+      "open_models",
+      "webhooks"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Token ${REPLICATE_API_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "version",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "pay-per-run",
+      "free_tier": false,
+      "starting_price": "$0.10/run"
+    },
+    "docs": "https://replicate.com/docs/reference/http#predictions.create",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "model hub",
+      "strength": "run any open model"
+    },
+    "notes": "Run 1000s of open models. Async predictions. Webhook callbacks. Pay per run."
+  },
+  {
+    "id": "agi://service/lepton/chat:v1",
+    "name": "Lepton AI",
+    "endpoint": "https://api.lepton.ai/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "stream",
+      "cost_optimized"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${LEPTON_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.10/1M tokens"
+    },
+    "docs": "https://docs.lepton.ai/",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "cost-optimized",
+      "strength": "affordable inference"
+    },
+    "notes": "Low-cost inference. Models: Llama, Mixtral. 50% cheaper than major providers."
+  },
+  {
+    "id": "agi://service/octoai/chat:v1",
+    "name": "OctoAI Text Generation",
+    "endpoint": "https://text.octoai.run/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "stream",
+      "custom_endpoints"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${OCTOAI_TOKEN}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.15/1M tokens"
+    },
+    "docs": "https://docs.octoai.cloud/",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "optimization focused",
+      "strength": "custom fine-tuned models"
+    },
+    "notes": "Optimized inference. Deploy custom models. OctoStack optimization platform."
+  },
+  {
+    "id": "agi://service/cerebras/chat:v1",
+    "name": "Cerebras Inference",
+    "endpoint": "https://api.cerebras.ai/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "stream",
+      "ultra_fast",
+      "wafer_scale"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${CEREBRAS_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": false,
+      "starting_price": "$0.60/1M tokens"
+    },
+    "docs": "https://inference-docs.cerebras.ai/",
+    "status": "beta",
+    "reputation": {
+      "ecosystem": "hardware innovator",
+      "strength": "world's fastest inference"
+    },
+    "notes": "Wafer-scale engine. 1800+ tokens/sec. Models: Llama 3. Record-breaking speeds."
+  },
+  {
+    "id": "agi://service/sambanova/chat:v1",
+    "name": "SambaNova Cloud",
+    "endpoint": "https://api.sambanova.ai/v1/chat/completions",
+    "capabilities": [
+      "chat",
+      "stream",
+      "dataflow_arch"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${SAMBANOVA_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": false,
+      "starting_price": "$0.50/1M tokens"
+    },
+    "docs": "https://docs.sambanova.ai/",
+    "status": "beta",
+    "reputation": {
+      "ecosystem": "hardware + software",
+      "strength": "dataflow architecture"
+    },
+    "notes": "Reconfigurable Dataflow Unit (RDU). Optimized for large models. Enterprise focus."
+  },
+  {
+    "id": "agi://service/novita/chat:v1",
+    "name": "Novita AI",
+    "endpoint": "https://api.novita.ai/v3/openai/chat/completions",
+    "capabilities": [
+      "chat",
+      "image",
+      "video",
+      "multi_modal"
+    ],
+    "auth": {
+      "method": "bearer",
+      "header": "Authorization: Bearer ${NOVITA_API_KEY}"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "models_param": "model",
+    "limits": {
+      "rate": "by plan"
+    },
+    "pricing": {
+      "model": "usage-based",
+      "free_tier": true,
+      "starting_price": "$0.10/1M tokens"
+    },
+    "docs": "https://docs.novita.ai/",
+    "status": "stable",
+    "reputation": {
+      "ecosystem": "multi-modal",
+      "strength": "unified text/image/video API"
+    },
+    "notes": "Text, image, video generation. 100+ models. OpenAI-compatible. Pay-as-you-go."
   }
 ]
-
-
