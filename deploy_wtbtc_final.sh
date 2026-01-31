@@ -110,47 +110,55 @@ signing_msg = rlp_encode_list([
 sig = sk.sign_digest(kh(signing_msg), sigencode=sigencode_string)
 r = int.from_bytes(sig[:32], 'big')
 s = int.from_bytes(sig[32:], 'big')
-v = CHAIN_ID * 2 + 35
 
 print(f"Signature created")
-print(f"  v: {v}")
 print(f"  r: {hex(r)[:20]}...")
 print(f"  s: {hex(s)[:20]}...")
-
-# Create signed transaction
-signed_tx = rlp_encode_list([
-    rlp_encode_int(nonce),
-    rlp_encode_int(gas_price),
-    rlp_encode_int(800000),
-    b'\x80',  # RLP empty for contract creation
-    rlp_encode_int(0),
-    rlp_encode_bytes(bytecode),
-    rlp_encode_int(v),
-    rlp_encode_int(r),
-    rlp_encode_int(s)
-])
-
-raw_tx = '0x' + signed_tx.hex()
 
 print(f"\n{'='*80}")
 print(f"📤 STEP 3: BROADCASTING TRANSACTION")
 print(f"{'='*80}")
 
-r = requests.post(BASE_RPC, json={
-    "jsonrpc": "2.0",
-    "method": "eth_sendRawTransaction",
-    "params": [raw_tx],
-    "id": 1
-}, timeout=30)
+# Try both recovery IDs (0 and 1)
+tx_hash = None
+for recovery_id in [0, 1]:
+    v = CHAIN_ID * 2 + 35 + recovery_id
 
-resp = r.json()
+    # Create signed transaction
+    signed_tx = rlp_encode_list([
+        rlp_encode_int(nonce),
+        rlp_encode_int(gas_price),
+        rlp_encode_int(800000),
+        b'\x80',  # RLP empty for contract creation
+        rlp_encode_int(0),
+        rlp_encode_bytes(bytecode),
+        rlp_encode_int(v),
+        rlp_encode_int(r),
+        rlp_encode_int(s)
+    ])
 
-if 'error' in resp:
+    raw_tx = '0x' + signed_tx.hex()
+
+    r_req = requests.post(BASE_RPC, json={
+        "jsonrpc": "2.0",
+        "method": "eth_sendRawTransaction",
+        "params": [raw_tx],
+        "id": 1
+    }, timeout=30)
+
+    resp = r_req.json()
+
+    if 'result' in resp:
+        tx_hash = resp['result']
+        print(f"✅ Transaction accepted with recovery_id={recovery_id}")
+        break
+    elif recovery_id == 0:
+        print(f"Trying alternate signature recovery...")
+
+if not tx_hash:
     print(f"\n❌ Transaction rejected!")
-    print(f"Error: {resp['error']}")
+    print(f"Error: {resp.get('error', 'Unknown error')}")
     exit(1)
-
-tx_hash = resp['result']
 
 # Calculate expected contract address
 contract_rlp = rlp_encode_list([bytes.fromhex(addr[2:]), rlp_encode_int(nonce)])
