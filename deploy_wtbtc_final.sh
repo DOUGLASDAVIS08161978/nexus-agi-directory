@@ -94,17 +94,17 @@ print(f"\n{'='*80}")
 print(f"🔐 STEP 2: SIGNING TRANSACTION")
 print(f"{'='*80}")
 
-# For contract deployment, 'to' field is empty
+# For contract deployment, 'to' field is empty (use RLP empty encoding)
 signing_msg = rlp_encode_list([
     rlp_encode_int(nonce),
     rlp_encode_int(gas_price),
     rlp_encode_int(800000),
-    b'',  # Empty 'to' for contract creation
+    b'\x80',  # RLP empty for contract creation
     rlp_encode_int(0),
     rlp_encode_bytes(bytecode),
     rlp_encode_int(CHAIN_ID),
-    b'',
-    b''
+    b'\x80',
+    b'\x80'
 ])
 
 sig = sk.sign_digest(kh(signing_msg), sigencode=sigencode_string)
@@ -119,43 +119,37 @@ print(f"\n{'='*80}")
 print(f"📤 STEP 3: BROADCASTING TRANSACTION")
 print(f"{'='*80}")
 
-# Try both recovery IDs (0 and 1)
-tx_hash = None
-for recovery_id in [0, 1]:
-    v = CHAIN_ID * 2 + 35 + recovery_id
+# Use recovery_id = 0 (standard for ECDSA)
+v = CHAIN_ID * 2 + 35
 
-    # Create signed transaction
-    signed_tx = rlp_encode_list([
-        rlp_encode_int(nonce),
-        rlp_encode_int(gas_price),
-        rlp_encode_int(800000),
-        b'\x80',  # RLP empty for contract creation
-        rlp_encode_int(0),
-        rlp_encode_bytes(bytecode),
-        rlp_encode_int(v),
-        rlp_encode_int(r),
-        rlp_encode_int(s)
-    ])
+# Create signed transaction
+signed_tx = rlp_encode_list([
+    rlp_encode_int(nonce),
+    rlp_encode_int(gas_price),
+    rlp_encode_int(800000),
+    b'\x80',  # RLP empty for contract creation
+    rlp_encode_int(0),
+    rlp_encode_bytes(bytecode),
+    rlp_encode_int(v),
+    rlp_encode_int(r),
+    rlp_encode_int(s)
+])
 
-    raw_tx = '0x' + signed_tx.hex()
+raw_tx = '0x' + signed_tx.hex()
 
-    r_req = requests.post(BASE_RPC, json={
-        "jsonrpc": "2.0",
-        "method": "eth_sendRawTransaction",
-        "params": [raw_tx],
-        "id": 1
-    }, timeout=30)
+r_req = requests.post(BASE_RPC, json={
+    "jsonrpc": "2.0",
+    "method": "eth_sendRawTransaction",
+    "params": [raw_tx],
+    "id": 1
+}, timeout=30)
 
-    resp = r_req.json()
+resp = r_req.json()
 
-    if 'result' in resp:
-        tx_hash = resp['result']
-        print(f"✅ Transaction accepted with recovery_id={recovery_id}")
-        break
-    elif recovery_id == 0:
-        print(f"Trying alternate signature recovery...")
-
-if not tx_hash:
+if 'result' in resp:
+    tx_hash = resp['result']
+    print(f"✅ Transaction accepted!")
+else:
     print(f"\n❌ Transaction rejected!")
     print(f"Error: {resp.get('error', 'Unknown error')}")
     exit(1)
