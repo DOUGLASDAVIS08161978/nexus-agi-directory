@@ -23,11 +23,11 @@ def rpc(m, p=[]):
 
 def ei(n):
     if n == 0: return b'\x80'
-    h = hex(n)[2:]
-    if len(h) % 2: h = '0' + h
-    b = bytes.fromhex(h)
-    if b[0] >= 0x80: return bytes([0x80 + len(b)]) + b
-    return b
+    # Convert to bytes, removing leading zeros
+    b = n.to_bytes((n.bit_length() + 7) // 8, 'big')
+    if len(b) == 0: return b'\x80'
+    if len(b) == 1 and b[0] < 0x80: return b
+    return bytes([0x80 + len(b)]) + b
 
 def eb(v):
     if isinstance(v, str):
