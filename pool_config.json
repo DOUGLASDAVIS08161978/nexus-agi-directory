@@ -1,7 +1,7 @@
 {
   "token0": "0x4200000000000000000000000000000000000006",
   "token1": "0x5B060693a0eB04e8ea43E5aDfC99FE5B7B92d53e",
-  "price": 0.0001,
+  "price": 20,
   "wallet": "0x9fe74d9d6f1ae0ce1fb3b51d4a82c05b74e280f3",
   "privateKey": "0eee6f45b0af8f5a6a24744a1a978346d5bd66b41c64dc30bd18a32e246515cd"
 }
