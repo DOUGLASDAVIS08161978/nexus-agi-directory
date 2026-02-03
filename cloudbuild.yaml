@@ -1,0 +1,55 @@
+steps:
+  # Step 1: Install dependencies
+  - name: 'python:3.11-slim'
+    id: 'install-deps'
+    entrypoint: 'pip'
+    args:
+      - 'install'
+      - 'ecdsa'
+      - 'pycryptodome'
+      - 'requests'
+
+  # Step 2: Deploy tBTC token to Base Sepolia
+  - name: 'python:3.11-slim'
+    id: 'deploy-tbtc'
+    entrypoint: 'python3'
+    args:
+      - 'deploy_tbtc_cloud.py'
+    env:
+      - 'BASE_SEPOLIA_RPC=https://sepolia.base.org'
+      - 'CHAIN_ID=84532'
+    secretEnv:
+      - 'PRIVATE_KEY'
+
+  # Step 3: Output contract address
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: 'output-address'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "=========================================="
+        echo "tBTC Token Deployed Successfully!"
+        echo "=========================================="
+        cat /workspace/deployment_output.txt
+        echo "=========================================="
+
+# Store deployment output as artifact
+artifacts:
+  objects:
+    location: 'gs://${PROJECT_ID}_cloudbuild/deployments'
+    paths:
+      - 'deployment_output.txt'
+
+# Use secret for private key
+availableSecrets:
+  secretManager:
+    - versionName: projects/${PROJECT_ID}/secrets/base-sepolia-private-key/versions/latest
+      env: 'PRIVATE_KEY'
+
+# Timeout
+timeout: '600s'
+
+options:
+  machineType: 'N1_HIGHCPU_8'
+  logging: CLOUD_LOGGING_ONLY
